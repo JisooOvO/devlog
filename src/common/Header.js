@@ -76,7 +76,7 @@ const HamburgerNavContainer = styled.div`
 `;
 
 const itemList = [
-  { id: 1, name: "Main", selected: true, url: "" },
+  { id: 1, name: "Main", selected: true, url: "/" },
   { id: 2, name: "Language", selected: false, url: "/language" },
   {
     id: 3,
@@ -89,9 +89,12 @@ const itemList = [
 
 const Nav = ({ func }) => {
   const [list, setList] = useState([]);
+  const location = window.location.href;
   useEffect(() => {
     itemList.forEach((item) => {
-      if (item.url === window.location.pathname.slice(7)) item.selected = true;
+      console.log();
+      if (item.url === location.slice(location.indexOf("#") + 1))
+        item.selected = true;
       else item.selected = false;
     });
     setList(

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Header from "./common/Header";
 import Main from "./router/Main";
 import Footer from "./common/Footer";
@@ -12,7 +12,7 @@ const Project = lazy(() => import("./router/Project"));
 
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <RecoilRoot>
         <Header />
         <Suspense fallback={<Loading />}>
@@ -25,7 +25,7 @@ function App() {
         </Suspense>
         <Footer />
       </RecoilRoot>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
