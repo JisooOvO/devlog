@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmy_blog=self.webpackChunkmy_blog||[]).push([[328],{328:(e,s,c)=>{c.r(s),c.d(s,{default:()=>r});var l=c(496);const r=()=>(0,l.jsx)("div",{children:"Project"})}}]);
+//# sourceMappingURL=328.4cb903b9.chunk.js.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/328.4cb903b9.chunk.js","mappings":"2IAAA,MAIA,EAJgBA,KACPC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,W","sources":["router/Project.js"],"sourcesContent":["const Project = () => {\r\n  return <div>Project</div>;\r\n};\r\n\r\nexport default Project;\r\n"],"names":["Project","_jsx","children"],"sourceRoot":""}
