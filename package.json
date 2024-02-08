@@ -1,6 +1,6 @@
 {
   "name": "my-blog",
-  "homepage": "https://jisooovo.github.io/devlog/",
+  "homepage": "https://jisooovo.github.io/devlog/#/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

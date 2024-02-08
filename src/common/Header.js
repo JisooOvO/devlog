@@ -59,7 +59,7 @@ const HamburgerNavContainer = styled.div`
   width: 100%;
   height: 10rem;
   padding: 2rem 4rem 2rem 4rem;
-  position: absolute;
+  position: fixed;
   top: 0;
   background-color: white;
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
