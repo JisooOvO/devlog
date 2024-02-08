@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useSetInnerWidth } from "./hooks";
 import { MD } from "./utils";
@@ -28,8 +28,8 @@ const HeaderContainer = styled.header`
   top: 0;
   z-index: 999;
   padding: 1rem 4rem 1rem 4rem;
-  border-bottom: 1px solid #f9f9f8;
-  background-color: #f9f9f8;
+  border-bottom: 1px solid #d9d9d9;
+  background-color: #d9d9d9;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,6 +62,7 @@ const HamburgerNavContainer = styled.div`
   position: fixed;
   top: 0;
   background-color: white;
+  z-index: 888;
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 
   &.open {
@@ -76,7 +77,7 @@ const HamburgerNavContainer = styled.div`
 `;
 
 const itemList = [
-  { id: 1, name: "Main", selected: true, url: "/" },
+  { id: 1, name: "Home", selected: true, url: "/" },
   { id: 2, name: "Language", selected: false, url: "/language" },
   {
     id: 3,
@@ -87,17 +88,36 @@ const itemList = [
   { id: 4, name: "Project", selected: false, url: "/project" },
 ];
 
-const Nav = ({ func }) => {
+const Nav = ({ func, navigate }) => {
   const [list, setList] = useState([]);
-  const location = window.location.href;
+
   useEffect(() => {
+    const location = window.location.href;
+    const pathname = location.slice(location.indexOf("#") + 1);
+
     if (location.indexOf("#") !== -1) {
       itemList.forEach((item) => {
-        if (item.url === location.slice(location.indexOf("#") + 1))
+        if (
+          item.url ===
+          pathname.slice(
+            0,
+            pathname.indexOf("/", 2) !== -1
+              ? pathname.indexOf("/", 2)
+              : undefined,
+          )
+        )
           item.selected = true;
         else item.selected = false;
       });
     }
+
+    console.log(
+      pathname.slice(
+        0,
+        pathname.indexOf("/", 2) !== -1 ? pathname.indexOf("/", 2) : undefined,
+      ),
+    );
+    console.log(itemList);
 
     setList(
       itemList?.map((item) => (
@@ -111,7 +131,7 @@ const Nav = ({ func }) => {
         </NavList>
       )),
     );
-  }, [func, location]);
+  }, [func, navigate]);
 
   return <NavContainer className="nav-container">{list}</NavContainer>;
 };
@@ -162,6 +182,7 @@ const Header = () => {
   const [isHambergurButtonClick, setIsHambergurButtonClick] = useRecoilState(
     atomIsHambergurButtonClick,
   );
+  const navigate = useNavigate();
 
   const handleClick = useCallback((event) => {
     const { target } = event;
@@ -189,10 +210,10 @@ const Header = () => {
       <HeaderContainer>
         <StlyedLink id="home" to={"/"} onClick={handleClick}>
           <p className="title">DevLog 📚</p>
-          <p className="description">배우고 기록하기</p>
+          <p className="description">차근히 배워가는중</p>
         </StlyedLink>
         {innerWidth >= MD ? (
-          <Nav func={handleClick} />
+          <Nav func={handleClick} navigate={navigate} />
         ) : (
           <HamburgerButton
             isHambergurButtonClick={isHambergurButtonClick}
