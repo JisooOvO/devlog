@@ -5,6 +5,7 @@ import Footer from "./common/Footer";
 import { RecoilRoot } from "recoil";
 import { Suspense, lazy } from "react";
 import Loading from "./common/Loading";
+import SideBar from "./common/SideBar";
 
 const Language = lazy(() => import("./router/Language"));
 const Stack = lazy(() => import("./router/Stack"));
@@ -15,6 +16,7 @@ function App() {
     <HashRouter>
       <RecoilRoot>
         <Header />
+        <SideBar />
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Main />} />

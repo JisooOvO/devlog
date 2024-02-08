@@ -91,12 +91,14 @@ const Nav = ({ func }) => {
   const [list, setList] = useState([]);
   const location = window.location.href;
   useEffect(() => {
-    itemList.forEach((item) => {
-      console.log();
-      if (item.url === location.slice(location.indexOf("#") + 1))
-        item.selected = true;
-      else item.selected = false;
-    });
+    if (location.indexOf("#") !== -1) {
+      itemList.forEach((item) => {
+        if (item.url === location.slice(location.indexOf("#") + 1))
+          item.selected = true;
+        else item.selected = false;
+      });
+    }
+
     setList(
       itemList?.map((item) => (
         <NavList
@@ -109,7 +111,7 @@ const Nav = ({ func }) => {
         </NavList>
       )),
     );
-  }, [func]);
+  }, [func, location]);
 
   return <NavContainer className="nav-container">{list}</NavContainer>;
 };
