@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/360.861c7738.chunk.js","mappings":"2IAAA,MAIA,EAJmBA,KACVC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,c","sources":["router/Javascript.js"],"sourcesContent":["const Javascript = () => {\r\n  return <div>Javascript</div>;\r\n};\r\n\r\nexport default Javascript;\r\n"],"names":["Javascript","_jsx","children"],"sourceRoot":""}
