@@ -28,7 +28,7 @@ const IconWrapper = styled.div`
 
 export const Board = styled.div`
   margin-top: 11rem;
-  margin-left: 30rem;
+  margin-left: 37rem;
   margin-right: 8rem;
 
   @media (max-width: ${MD + "px"}) {

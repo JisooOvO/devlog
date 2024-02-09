@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { categoryList } from "./categoryList";
 
 const SideBarContainer = styled.section`
-  width: 18rem;
+  width: 22rem;
   height: calc(100vh - 7rem);
   position: fixed;
   top: 7rem;
@@ -26,17 +26,14 @@ const MainCategory = styled.ul`
 
 const MainTitle = styled(Link)`
   width: fit-content;
-  display: block;
+  display: flex;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 400;
   color: rgb(210, 10, 57);
   margin-bottom: 1.5rem;
-  &:hover {
+  & p:hover {
     cursor: pointer;
     opacity: 0.6;
-  }
-  &::after {
-    content: " ▾";
   }
 `;
 
@@ -45,32 +42,41 @@ const SubCategory = styled.li`
   margin-bottom: 1.5rem;
   margin-left: 1rem;
   padding-inline-start: 0px;
+
+  &.hidden {
+    display: none;
+  }
 `;
 
 const SubTitle = styled(Link)`
   width: fit-content;
-  display: block;
+  display: flex;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 400;
   color: rgb(254, 110, 11);
   margin-left: 0.25rem;
   margin-bottom: 1rem;
-  &:hover {
+
+  & p:hover {
     cursor: pointer;
     opacity: 0.6;
   }
   &::before {
-    content: "📁 ";
+    content: "💡 ";
+    margin-right: 0.25rem;
   }
 `;
 
-const ThirdCategory = styled.div`
-  width: fit-content;
+const ThirdCategory = styled.ul`
+  &.hidden {
+    display: none;
+  }
 `;
 
 const ThirdTitle = styled(SubTitle)`
   width: fit-content;
-  font-weight: 500;
+  display: flex;
+  font-weight: 300;
   color: rgb(64, 160, 43);
   margin-top: 1.5rem;
   padding-inline-start: 0.5rem;
@@ -97,28 +103,72 @@ const Line = styled.hr`
 `;
 
 const List = styled(ThirdTitle)`
+  display: block;
+  white-space: nowrap;
   padding-inline-start: 2.5rem;
   color: black;
   font-size: medium;
+  &:hover {
+    opacity: 0.6;
+  }
   &::before {
     content: "- ";
+  }
+  &.hidden {
+    display: none;
+  }
+`;
+
+const Button = styled.button`
+  font-size: large;
+  color: inherit;
+  border: none;
+  margin-top: 0.1rem;
+  background-color: inherit;
+
+  &:hover {
+    cursor: pointer;
   }
 `;
 
 const SideBar = ({ className }) => {
+  function handleFold(event) {
+    event.preventDefault();
+
+    const { target } = event;
+
+    if (target.innerText === "▼") target.innerText = "▲";
+    else target.innerText = "▼";
+
+    const { childNodes } = target.closest("#main");
+
+    for (let i = 1; i < childNodes.length; i++) {
+      childNodes[i].classList.toggle("hidden");
+    }
+  }
+
   return (
     <SideBarContainer className={className}>
       <CategoryTitle>CATEGORY</CategoryTitle>
       <Line />
       {categoryList.map((item) => (
-        <MainCategory key={item.id}>
-          <MainTitle to={item.url}>{item.name}</MainTitle>
+        <MainCategory id="main" key={item.id}>
+          <MainTitle to={item.url}>
+            <p>{item.name}</p>
+            <Button onClick={handleFold}>▼</Button>
+          </MainTitle>
           {item.sub?.map((subItem) => (
-            <SubCategory key={subItem.id}>
-              <SubTitle to={subItem.url}>{subItem.name}</SubTitle>
+            <SubCategory id="main" key={subItem.id}>
+              <SubTitle to={subItem.url}>
+                <p>{subItem.name}</p>
+                <Button onClick={handleFold}>▼</Button>
+              </SubTitle>
               {subItem.sub?.map((sub) => (
-                <ThirdCategory key={sub.id}>
-                  <ThirdTitle to={sub.url}>{sub.name}</ThirdTitle>
+                <ThirdCategory id="main" key={sub.id}>
+                  <ThirdTitle to={sub.url}>
+                    <p>{sub.name}</p>
+                    <Button onClick={handleFold}>▼</Button>
+                  </ThirdTitle>
                   {sub.list?.map((list) => (
                     <List to={list.url} key={list.id}>
                       {list.name}

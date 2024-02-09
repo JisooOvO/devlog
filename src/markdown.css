@@ -67,6 +67,7 @@
 .markdown table {
     width: 100%;
     border: 1px solid #ababab;
+	table-layout: fixed;
 }
 
 .markdown pre {

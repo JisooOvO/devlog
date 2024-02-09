@@ -1,5 +1,7 @@
+import { Board } from "./styled";
+
 const Footer = () => {
-  return <div>Footer</div>;
+  return <Board>Footer</Board>;
 };
 
 export default Footer;

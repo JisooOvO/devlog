@@ -89,7 +89,12 @@ const itemList = [
     selected: false,
     url: "/stack",
   },
-  { id: 4, name: "Project", selected: false, url: "/project" },
+  {
+    id: 4,
+    name: "Computer",
+    selected: false,
+    url: "/computer",
+  },
 ];
 
 const Nav = ({ func, navigate }) => {
