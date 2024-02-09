@@ -1,1 +1,1 @@
-export const MD = 780;
+export const MD = 1250;

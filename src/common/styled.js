@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { MD } from "./utils";
 
 const fadeOutAndIn = keyframes`
     0% {
@@ -22,6 +23,18 @@ const IconWrapper = styled.div`
 
   &.clicked {
     animation: ${fadeOutAndIn} 1s;
+  }
+`;
+
+export const Board = styled.div`
+  margin-top: 11rem;
+  margin-left: 30rem;
+  margin-right: 8rem;
+
+  @media (max-width: ${MD + "px"}) {
+    width: calc(100vw - 8rem);
+    margin-left: 4rem;
+    margin-right: 4rem;
   }
 `;
 

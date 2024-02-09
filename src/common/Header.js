@@ -8,6 +8,7 @@ import { useRecoilState } from "recoil";
 import { atomIsHambergurButtonClick } from "./atom";
 import CloseIcon from "../Images/CloseIcon";
 import { useCallback, useEffect, useState } from "react";
+import SideBar from "./SideBar";
 
 const StlyedLink = styled(Link)`
   width: max-content;
@@ -15,9 +16,11 @@ const StlyedLink = styled(Link)`
     font-size: 1.75rem;
     letter-spacing: 1px;
     margin-bottom: 0.5rem;
+    padding-inline-start: 0px;
   }
   .description {
     color: #707070;
+    padding-inline-start: 0px;
   }
 `;
 
@@ -57,11 +60,12 @@ const NavList = styled(Link)`
 
 const HamburgerNavContainer = styled.div`
   width: 100%;
-  height: 10rem;
-  padding: 2rem 4rem 2rem 4rem;
+  height: 40rem;
   position: fixed;
   top: 0;
   background-color: white;
+  overflow-y: scroll;
+  overflow-x: hidden;
   z-index: 888;
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 
@@ -71,7 +75,7 @@ const HamburgerNavContainer = styled.div`
   }
 
   &.close {
-    transform: translateY(-7rem);
+    transform: translateY(-33rem);
     transition-duration: 1s;
   }
 `;
@@ -110,14 +114,6 @@ const Nav = ({ func, navigate }) => {
         else item.selected = false;
       });
     }
-
-    console.log(
-      pathname.slice(
-        0,
-        pathname.indexOf("/", 2) !== -1 ? pathname.indexOf("/", 2) : undefined,
-      ),
-    );
-    console.log(itemList);
 
     setList(
       itemList?.map((item) => (
@@ -172,7 +168,7 @@ const HamburgerButton = ({
 const HamburgerNav = () => {
   return (
     <HamburgerNavContainer className={"hamburger close"}>
-      카테고리 들어갈 자리
+      <SideBar className={"hamburger"} />
     </HamburgerNavContainer>
   );
 };
@@ -221,7 +217,7 @@ const Header = () => {
           />
         )}
       </HeaderContainer>
-      {innerWidth >= MD ? "" : <HamburgerNav />}
+      {innerWidth >= MD ? <SideBar /> : <HamburgerNav />}
     </>
   );
 };

@@ -1,27 +1,39 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { categoryList } from "./categoryList";
 
 const SideBarContainer = styled.section`
-  width: 15rem;
+  width: 18rem;
   height: calc(100vh - 7rem);
   position: fixed;
   top: 7rem;
   padding: 4rem;
   background-color: #f9f9f8;
   overflow-y: scroll;
+
+  &.hamburger {
+    width: 100%;
+    height: 100%;
+    overflow-y: visible;
+    position: static;
+  }
 `;
 
 const MainCategory = styled.ul`
+  width: fit-content;
   margin-bottom: 4rem;
 `;
 
 const MainTitle = styled(Link)`
+  width: fit-content;
   display: block;
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: rgb(210, 10, 57);
   margin-bottom: 1.5rem;
   &:hover {
     cursor: pointer;
+    opacity: 0.6;
   }
   &::after {
     content: " ▾";
@@ -29,102 +41,73 @@ const MainTitle = styled(Link)`
 `;
 
 const SubCategory = styled.li`
+  width: fit-content;
   margin-bottom: 1.5rem;
-  margin-left: 2.5rem;
-  margin-bottom: 2rem;
-  list-style-type: "📁";
+  margin-left: 1rem;
+  padding-inline-start: 0px;
 `;
 
 const SubTitle = styled(Link)`
+  width: fit-content;
   display: block;
-  font-size: medium;
-  font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(254, 110, 11);
   margin-left: 0.25rem;
   margin-bottom: 1rem;
   &:hover {
     cursor: pointer;
-    text-decoration: underline;
+    opacity: 0.6;
+  }
+  &::before {
+    content: "📁 ";
   }
 `;
 
-const ThirdCategory = styled.div``;
+const ThirdCategory = styled.div`
+  width: fit-content;
+`;
 
 const ThirdTitle = styled(SubTitle)`
-  font-weight: 300;
+  width: fit-content;
+  font-weight: 500;
+  color: rgb(64, 160, 43);
+  margin-top: 1.5rem;
+  padding-inline-start: 0.5rem;
+  &::before {
+    content: "📁 ";
+  }
 `;
 
 const CategoryTitle = styled.p`
-  width: 100%;
+  width: fit-content;
   font-size: 1.75rem;
   letter-spacing: 1px;
   font-weight: 300;
+  padding-inline-start: 0px;
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const Line = styled.hr`
-  margin-bottom: 2rem;
+  width: 15rem;
+  margin-block-end: 2rem;
+  margin-inline-start: 0;
 `;
 
-const categoryList = [
-  {
-    id: "main1",
-    name: "🏆 Language",
-    url: "/language",
-    sub: [
-      { id: "main1-1", name: "Javascript", url: "/language/javascript" },
-      { id: "main1-2", name: "Java", url: "/language/java" },
-      { id: "main1-3", name: "Python", url: "/language/python" },
-    ],
-  },
-  {
-    id: "main2",
-    name: "🎁 Stack",
-    url: "/stack",
-    sub: [
-      {
-        id: "main2-1",
-        name: "Framework",
-        sub: [
-          { id: "main2-1-1", name: "React", url: "/stack/framework/react" },
-          {
-            id: "main2-1-2",
-            name: "Spring Boot",
-            url: "/stack/framework/spring_boot",
-          },
-        ],
-      },
-      {
-        id: "main2-2",
-        name: "Library",
-        url: "/library",
-        sub: [
-          {
-            id: "main2-2-1",
-            name: "Styled-Components",
-            url: "/stack/library/styled-components",
-          },
-          {
-            id: "main2-2-2",
-            name: "React-query",
-            url: "/stack/library/react-query",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "main3",
-    name: "⛳ Project",
-    url: "/project",
-    sub: [
-      //   { id: "main3-1", name: "test1" },
-      //   { id: "main3-2", name: "test2" },
-    ],
-  },
-];
+const List = styled(ThirdTitle)`
+  padding-inline-start: 2.5rem;
+  color: black;
+  font-size: medium;
+  &::before {
+    content: "- ";
+  }
+`;
 
-const SideBar = () => {
+const SideBar = ({ className }) => {
   return (
-    <SideBarContainer>
+    <SideBarContainer className={className}>
       <CategoryTitle>CATEGORY</CategoryTitle>
       <Line />
       {categoryList.map((item) => (
@@ -136,6 +119,11 @@ const SideBar = () => {
               {subItem.sub?.map((sub) => (
                 <ThirdCategory key={sub.id}>
                   <ThirdTitle to={sub.url}>{sub.name}</ThirdTitle>
+                  {sub.list?.map((list) => (
+                    <List to={list.url} key={list.id}>
+                      {list.name}
+                    </List>
+                  ))}
                 </ThirdCategory>
               ))}
             </SubCategory>

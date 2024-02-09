@@ -1,0 +1,88 @@
+/* MarkDown*/
+.markdown h1 {
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1.2;
+	color: rgb(210, 10, 57);
+	margin-block-start: 2rem;
+	margin-block-end: 2rem;
+}
+
+.markdown h2 {
+	font-size: 1.75rem;
+	font-weight: 600;
+	line-height: 1.2;
+	color: rgb(254, 110, 11);
+	margin-block-start: 2rem;
+	margin-block-end: 2rem;
+	margin-left: 1rem;
+
+}
+
+.markdown h3 {
+	font-size: 1.5rem;
+	line-height: 1.2;
+	color: rgb(64, 160, 43);
+	margin-block-start: 2rem;
+	margin-block-end: 2rem;
+	margin-left: 1rem;
+}
+
+.markdown p {
+	font-size: 1.25rem;
+    font-weight: 300;
+    margin-block-start: 15px;
+	margin-block-end: 15px;
+}
+
+.markdown li {
+	font-size: 1.25rem;
+    font-weight: 300;
+	margin-left: 3rem;
+    margin-block-start: 2rem;
+	margin-block-end: 2rem;
+}
+
+.markdown li {
+	list-style-type: circle;
+}
+
+.markdown blockquote > ul > li {
+	margin-left: 2.5rem;
+	list-style-type: square;
+}
+
+.markdown hr {
+	margin-block-start: 2rem;
+	margin-block-end: 2rem;
+}
+
+.markdown a {
+	color: rgb(254, 110, 11);
+    text-decoration: underline;
+    margin-block-start: 15px;
+	margin-block-end: 15px;
+}
+
+.markdown table {
+    width: 100%;
+    border: 1px solid #ababab;
+}
+
+.markdown pre {
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-block-start: 15px;
+	margin-block-end: 15px;
+	padding: 2rem;
+	background-color: black;
+	border: .3em solid #7a6651;
+	border-radius: .5em;
+	box-shadow: 1px 1px .5em #000 inset;
+	color: white;
+	overflow: auto;
+}
+
+.markdown pre > code {
+	line-height: 2rem;
+}
