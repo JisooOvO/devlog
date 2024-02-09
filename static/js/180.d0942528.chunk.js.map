@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/180.d0942528.chunk.js","mappings":"2IAAA,MAIA,EAJiBA,KACRC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,Y","sources":["router/Language.js"],"sourcesContent":["const Language = () => {\r\n  return <div>Language</div>;\r\n};\r\n\r\nexport default Language;\r\n"],"names":["Language","_jsx","children"],"sourceRoot":""}

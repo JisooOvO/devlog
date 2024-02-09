@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/888.85e2d124.chunk.js","mappings":"2IAAA,MAIA,EAJcA,KACLC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,S","sources":["router/Stack.js"],"sourcesContent":["const Stack = () => {\r\n  return <div>Stack</div>;\r\n};\r\n\r\nexport default Stack;\r\n"],"names":["Stack","_jsx","children"],"sourceRoot":""}
