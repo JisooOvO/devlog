@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./common/Header";
 import Main from "./router/Main";
 import { RecoilRoot } from "recoil";
