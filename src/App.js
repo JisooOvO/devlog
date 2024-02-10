@@ -1,7 +1,6 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Header from "./common/Header";
 import Main from "./router/Main";
-import Comment from "./common/Comment";
 import { RecoilRoot } from "recoil";
 import { Suspense, lazy } from "react";
 import Loading from "./common/Loading";
@@ -10,7 +9,7 @@ const Contents = lazy(() => import("./router/Contents"));
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <RecoilRoot>
         <Header />
         <Suspense fallback={<Loading />}>
@@ -25,9 +24,8 @@ function App() {
             ></Route>
           </Routes>
         </Suspense>
-        <Comment />
       </RecoilRoot>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

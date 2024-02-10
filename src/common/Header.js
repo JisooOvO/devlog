@@ -12,7 +12,7 @@ import SideBar from "./SideBar";
 
 const StlyedLink = styled(Link)`
   width: max-content;
-  .title {
+  .blog-name {
     font-size: 1.75rem;
     letter-spacing: 1px;
     margin-bottom: 0.5rem;
@@ -101,24 +101,12 @@ const Nav = ({ func, navigate }) => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    const location = window.location.href;
-    const pathname = location.slice(location.indexOf("#") + 1);
+    const pathname = window.location.pathname;
 
-    if (location.indexOf("#") !== -1) {
-      itemList.forEach((item) => {
-        if (
-          item.url ===
-          pathname.slice(
-            0,
-            pathname.indexOf("/", 2) !== -1
-              ? pathname.indexOf("/", 2)
-              : undefined,
-          )
-        )
-          item.selected = true;
-        else item.selected = false;
-      });
-    }
+    itemList.forEach((item) => {
+      if (item.url === pathname.slice(7)) item.selected = true;
+      else item.selected = false;
+    });
 
     setList(
       itemList?.map((item) => (
@@ -187,7 +175,9 @@ const Header = () => {
 
   const handleClick = useCallback((event) => {
     const { target } = event;
-    const { childNodes } = document.querySelector(".nav-container");
+    const childNodes = document.querySelector(".nav-container")?.childNodes;
+
+    if (!childNodes) return;
 
     for (const node of childNodes) {
       node.classList.remove("selected");
@@ -210,7 +200,7 @@ const Header = () => {
     <>
       <HeaderContainer>
         <StlyedLink id="home" to={"/"} onClick={handleClick}>
-          <p className="title">DevLog 📚</p>
+          <p className="blog-name">DevLog 📚</p>
           <p className="description">차근히 배워가는중</p>
         </StlyedLink>
         {innerWidth >= MD ? (
