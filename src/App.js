@@ -1,7 +1,7 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Header from "./common/Header";
 import Main from "./router/Main";
-import Footer from "./common/Footer";
+import Comment from "./common/Comment";
 import { RecoilRoot } from "recoil";
 import { Suspense, lazy } from "react";
 import Loading from "./common/Loading";
@@ -25,7 +25,7 @@ function App() {
             ></Route>
           </Routes>
         </Suspense>
-        <Footer />
+        <Comment />
       </RecoilRoot>
     </HashRouter>
   );
