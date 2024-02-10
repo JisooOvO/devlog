@@ -61,10 +61,6 @@ const SubTitle = styled(Link)`
     cursor: pointer;
     opacity: 0.6;
   }
-  &::before {
-    content: "💡 ";
-    margin-right: 0.25rem;
-  }
 `;
 
 const ThirdCategory = styled.ul`
@@ -80,9 +76,6 @@ const ThirdTitle = styled(SubTitle)`
   color: rgb(64, 160, 43);
   margin-top: 1.5rem;
   padding-inline-start: 0.5rem;
-  &::before {
-    content: "📁 ";
-  }
 `;
 
 const CategoryTitle = styled.p`
@@ -90,10 +83,8 @@ const CategoryTitle = styled.p`
   font-size: 1.75rem;
   letter-spacing: 1px;
   font-weight: 300;
+  pointer-events: none;
   padding-inline-start: 0px;
-  &:hover {
-    cursor: default;
-  }
 `;
 
 const Line = styled.hr`

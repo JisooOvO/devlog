@@ -13,14 +13,23 @@ import SideBar from "./SideBar";
 const StlyedLink = styled(Link)`
   width: max-content;
   .blog-name {
+    color: white;
     font-size: 1.75rem;
-    letter-spacing: 1px;
+    font-family: "iceJaram-Rg";
+    font-weight: 400;
+    letter-spacing: 2px;
     margin-bottom: 0.5rem;
     padding-inline-start: 0px;
   }
   .description {
-    color: #707070;
+    letter-spacing: 1px;
+    color: white;
     padding-inline-start: 0px;
+
+    @media (max-width: ${MD + "px"}) {
+      font-size: smaller;
+      letter-spacing: 0;
+    }
   }
 `;
 
@@ -32,7 +41,7 @@ const HeaderContainer = styled.header`
   z-index: 999;
   padding: 1rem 4rem 1rem 4rem;
   border-bottom: 1px solid #d9d9d9;
-  background-color: #d9d9d9;
+  background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,16 +54,18 @@ const NavContainer = styled.ul`
 
 const NavList = styled(Link)`
   height: 1.5rem;
+  color: white;
+  font-weight: 500;
   box-sizing: border-box;
   font-size: large;
 
   &:hover {
     cursor: pointer;
-    border-bottom: 2px solid #46bd87;
+    border-bottom: 3px solid #447ecd;
   }
 
   &.selected {
-    border-bottom: 2px solid #46bd87;
+    border-bottom: 3px solid #447ecd;
   }
 `;
 
@@ -63,7 +74,7 @@ const HamburgerNavContainer = styled.div`
   height: 40rem;
   position: fixed;
   top: 0;
-  background-color: white;
+  background-color: #f9f9f8;
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 888;
@@ -81,7 +92,7 @@ const HamburgerNavContainer = styled.div`
 `;
 
 const itemList = [
-  { id: 1, name: "Home", selected: true, url: "/" },
+  { id: 1, name: "Home", selected: false, url: "" },
   { id: 2, name: "Language", selected: false, url: "/language" },
   {
     id: 3,
@@ -101,12 +112,15 @@ const Nav = ({ func, navigate }) => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    const pathname = window.location.pathname;
+    const pathname = window.location.pathname.slice(7);
 
     itemList.forEach((item) => {
-      if (item.url === pathname.slice(7)) item.selected = true;
+      if (item.url !== "" && pathname.startsWith(item.url))
+        item.selected = true;
       else item.selected = false;
     });
+
+    if (pathname === "") itemList[0].selected = true;
 
     setList(
       itemList?.map((item) => (
@@ -114,7 +128,7 @@ const Nav = ({ func, navigate }) => {
           onClick={func}
           to={item.url}
           key={item.id}
-          className={item.selected ? "selected" : ""}
+          className={item.selected === true ? "selected" : ""}
         >
           {item.name}
         </NavList>
@@ -175,18 +189,9 @@ const Header = () => {
 
   const handleClick = useCallback((event) => {
     const { target } = event;
-    const childNodes = document.querySelector(".nav-container")?.childNodes;
 
-    if (!childNodes) return;
-
-    for (const node of childNodes) {
-      node.classList.remove("selected");
-      if (target.tagName === "P") {
-        childNodes[0].classList.add("selected");
-      }
-      if (target === node) {
-        target.classList.add("selected");
-      }
+    if (target.className === "description") {
+      window.open("https://github.com/JisooOvO", "_blank");
     }
   }, []);
 
@@ -200,8 +205,8 @@ const Header = () => {
     <>
       <HeaderContainer>
         <StlyedLink id="home" to={"/"} onClick={handleClick}>
-          <p className="blog-name">DevLog 📚</p>
-          <p className="description">차근히 배워가는중</p>
+          <p className="blog-name">Jisoo's Note</p>
+          <p className="description">https://github.com/JisooOvO</p>
         </StlyedLink>
         {innerWidth >= MD ? (
           <Nav func={handleClick} navigate={navigate} />

@@ -19,7 +19,7 @@ const Comment = () => {
     commentsEl.current?.appendChild(scriptEl);
   }, []);
 
-  return <div ref={commentsEl}>댓글나오니</div>;
+  return <div ref={commentsEl}></div>;
 };
 
 const Contents = () => {

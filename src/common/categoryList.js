@@ -1,7 +1,7 @@
 export const categoryList = [
   {
     id: "main1",
-    name: "🏆 Language",
+    name: "Language",
     url: "/language",
     sub: [
       {
@@ -260,7 +260,7 @@ export const categoryList = [
   },
   {
     id: "main2",
-    name: "🎁 Stack",
+    name: "Stack",
     url: "/stack",
     sub: [
       {
@@ -297,7 +297,7 @@ export const categoryList = [
   },
   {
     id: "main3",
-    name: "⛳ Computer",
+    name: "Computer",
     url: "/computer",
     sub: [
       //   { id: "main3-1", name: "test1" },
