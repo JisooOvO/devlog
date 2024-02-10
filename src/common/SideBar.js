@@ -123,7 +123,6 @@ const Button = styled.button`
   font-size: large;
   color: inherit;
   border: none;
-  margin-top: 0.1rem;
   background-color: inherit;
 
   &:hover {

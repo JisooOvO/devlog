@@ -1,11 +1,7 @@
-import styled from "styled-components";
-
-const MainContainer = styled.section`
-  height: 70vh;
-`;
+import { Board } from "../common/styled";
 
 const Main = () => {
-  return <MainContainer>Main</MainContainer>;
+  return <Board>Main</Board>;
 };
 
 export default Main;
