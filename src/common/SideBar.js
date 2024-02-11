@@ -28,20 +28,22 @@ const MainTitle = styled(Link)`
   width: fit-content;
   display: flex;
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 500;
   color: rgb(210, 10, 57);
   margin-bottom: 1.5rem;
   & p:hover {
     cursor: pointer;
     opacity: 0.6;
   }
+  &::before {
+    content: "•";
+    margin-right: 0.5rem;
+  }
 `;
 
 const SubCategory = styled.li`
   width: fit-content;
   margin-bottom: 1.5rem;
-  margin-left: 1rem;
-  padding-inline-start: 0px;
 
   &.hidden {
     display: none;
@@ -56,10 +58,13 @@ const SubTitle = styled(Link)`
   color: rgb(254, 110, 11);
   margin-left: 0.25rem;
   margin-bottom: 1rem;
-
   & p:hover {
     cursor: pointer;
     opacity: 0.6;
+  }
+  &::before {
+    content: "•";
+    margin-right: 0.5rem;
   }
 `;
 
@@ -75,7 +80,11 @@ const ThirdTitle = styled(SubTitle)`
   font-weight: 300;
   color: rgb(64, 160, 43);
   margin-top: 1.5rem;
-  padding-inline-start: 0.5rem;
+  margin-left: 1rem;
+  &::before {
+    content: "•";
+    margin-right: 0.5rem;
+  }
 `;
 
 const CategoryTitle = styled.p`
@@ -96,7 +105,7 @@ const Line = styled.hr`
 const List = styled(ThirdTitle)`
   display: block;
   white-space: nowrap;
-  padding-inline-start: 2.5rem;
+  padding-inline-start: 0.5rem;
   color: black;
   font-size: medium;
   &:hover {
@@ -119,6 +128,11 @@ const Button = styled.button`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const Number = styled.span`
+  margin-left: 0.25rem;
+  font-size: medium;
 `;
 
 const SideBar = ({ className }) => {
@@ -156,7 +170,10 @@ const SideBar = ({ className }) => {
               {subItem.sub?.map((sub) => (
                 <ThirdCategory id="main" key={sub.id}>
                   <ThirdTitle to={sub.url}>
-                    <p>{sub.name}</p>
+                    <p>
+                      {sub.name}
+                      <Number>{"(" + sub.list?.length + ")"}</Number>
+                    </p>
                     <Button onClick={handleFold}>▼</Button>
                   </ThirdTitle>
                   {sub.list?.map((list) => (

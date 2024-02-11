@@ -34,7 +34,7 @@ const StlyedLink = styled(Link)`
 `;
 
 const HeaderContainer = styled.header`
-  width: calc(100% - 8rem);
+  width: calc(100vw - 8rem);
   height: 5rem;
   position: fixed;
   top: 0;

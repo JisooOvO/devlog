@@ -268,11 +268,17 @@ export const categoryList = [
         name: "Framework",
         url: "/stack/framework",
         sub: [
-          { id: "main2-1-1", name: "React", url: "/stack/framework/react" },
+          {
+            id: "main2-1-1",
+            name: "React",
+            url: "/stack/framework/react",
+            list: [],
+          },
           {
             id: "main2-1-2",
             name: "Spring Boot",
             url: "/stack/framework/spring_boot",
+            list: [],
           },
         ],
       },
@@ -285,11 +291,13 @@ export const categoryList = [
             id: "main2-2-1",
             name: "Styled-Components",
             url: "/stack/library/styled-components",
+            list: [],
           },
           {
             id: "main2-2-2",
             name: "React-query",
             url: "/stack/library/react-query",
+            list: [],
           },
         ],
       },

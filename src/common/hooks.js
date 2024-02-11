@@ -28,7 +28,7 @@ export const useTyping = (target) => {
         if (nextText) return prevText + nextText;
         else return prevText;
       });
-    }, 100);
+    }, 50);
 
     return () => clearInterval(intervalId);
   }, [target]);
