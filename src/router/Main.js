@@ -690,7 +690,7 @@ const MyProject = () => {
         title={"Github Page 기반 개인 SPA 블로그 제작 프로젝트"}
         dates={"2023.02.08 ~ Proceeding"}
         description={
-          "지금 보고계신 웹 페이지는 Jekeyll을 사용하지 않고 Github Page와 React만을 사용하여 제작한 개인 블로그 및 포트폴리오입니다. 포트폴리오와 공부 기록을 업로드합니다."
+          "지금 보고계신 웹 페이지는 Jekeyll을 사용하지 않고 Github Page와 React만을 사용하여 제작한 개인 블로그 및 포트폴리오입니다. 포트폴리오와 공부 기록을 업로드합니다. Single Page 방식이므로 Home URL에만 URL 직접 접속이 가능합니다."
         }
         stacks={[
           <ReactIcon />,
