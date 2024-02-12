@@ -208,7 +208,7 @@ const Header = () => {
     if (!sideBar?.classList.contains("hidden"))
       board?.classList.remove("unfold");
     else board?.classList.add("unfold");
-  }, [navigate]);
+  }, [navigate, innerWidth]);
 
   return (
     <>
