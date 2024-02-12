@@ -114,13 +114,15 @@ const Nav = ({ func, navigate }) => {
   useEffect(() => {
     const pathname = window.location.pathname.slice(7);
 
+    console.log(pathname);
+
     itemList.forEach((item) => {
       if (item.url !== "" && pathname.startsWith(item.url))
         item.selected = true;
       else item.selected = false;
     });
 
-    if (pathname === "") itemList[0].selected = true;
+    if (pathname === "/" || pathname === "") itemList[0].selected = true;
 
     setList(
       itemList?.map((item) => (
