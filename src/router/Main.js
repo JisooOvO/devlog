@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { Board, BufferZone, Icon } from "../common/styled";
 import { useEffect, useRef, useState } from "react";
-import { useIntersectionObserver, useTyping } from "../common/hooks";
+import { useTyping } from "../common/hooks";
 import { MD } from "../common/utils";
 import RightArrow from "../Images/RightArrow";
 import ReactIcon from "../Images/ReactIcon";
@@ -48,30 +48,6 @@ const huerotate = keyframes`
   }
   100% {
     filter: hue-rotate(360deg)
-  }
-`;
-
-const standup = keyframes`
-  0% {
-    opacity: 0;
-    transform: perspective(2500px) rotateX(-90deg);
-  }
-  100% {
-    opacity: 1;
-    transform: rotateX(0deg);
-    pointer-events: all;
-  }
-`;
-
-const closeup = keyframes`
-  0% {
-    opacity: 1;
-    transform: rotateX(0deg);
-    pointer-events: all;
-  }
-  100% {
-    opacity: 0;
-    transform: perspective(2500px) rotateX(90deg);
   }
 `;
 
@@ -161,18 +137,9 @@ const StyledTitle = styled(IntroContainer)``;
 
 const MyInfoContainer = styled.section`
   position: relative;
-  opacity: 0;
   pointer-events: none;
   margin-bottom: 5rem;
   transform-origin: 50% 50%;
-
-  &.animate {
-    animation: ${standup} 0.4s ease forwards;
-  }
-
-  &.close {
-    animation: ${closeup} 0.4s ease forwards;
-  }
 `;
 
 const MyInfoBox = styled.article`
@@ -186,6 +153,10 @@ const MyInfoBox = styled.article`
   border-radius: 0.75rem;
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
   animation: ${huerotate} 6s infinite linear;
+
+  @media (max-width: ${MD + "px"}) {
+    font-size: 1rem;
+  }
 `;
 
 const SubTitle = styled.h2`
@@ -315,7 +286,7 @@ const StyledProjectBox = styled(MyInfoBox)`
   }
 
   img {
-    width: 20rem;
+    max-width: 20rem;
     max-height: 25rem;
     object-fit: fill;
     border-radius: 1rem;
@@ -422,10 +393,6 @@ const Description = () => {
 };
 
 const MyInfo = () => {
-  const { targetRef, isObserve } = useIntersectionObserver({
-    threshold: 0.45,
-  });
-
   const [isClick, setIsClick] = useState(false);
 
   const handleClick = () => {
@@ -451,10 +418,7 @@ const MyInfo = () => {
   };
 
   return (
-    <MyInfoContainer
-      ref={targetRef}
-      className={isObserve ? "animate" : "close"}
-    >
+    <MyInfoContainer>
       <StyledTitle>
         <Title>Information</Title>
       </StyledTitle>
@@ -482,7 +446,6 @@ const MyInfo = () => {
           </EduDetail>
         </InnerBox>
       </MyInfoBox>
-
       <DetailBox style={{ display: "none" }} id="detailBox" className="close">
         <IconWrapper>
           <BlinkIcon icon={<RightArrow />} func={handleClick} />
@@ -546,15 +509,8 @@ const Stack = ({ icon, title }) => {
 };
 
 const MyStack = () => {
-  const { targetRef, isObserve } = useIntersectionObserver({
-    threshold: 0.2,
-  });
-
   return (
-    <MyStackContainer
-      ref={targetRef}
-      className={isObserve ? "animate" : "close"}
-    >
+    <MyStackContainer>
       <StyledTitle>
         <Title>Stack</Title>
       </StyledTitle>
@@ -631,15 +587,8 @@ const ProjectBox = ({ src, title, dates, description, stacks, url }) => {
 };
 
 const MyProject = () => {
-  const { targetRef, isObserve } = useIntersectionObserver({
-    threshold: 0.3,
-  });
-
   return (
-    <MyProjectContainer
-      ref={targetRef}
-      className={isObserve ? "animate" : "close"}
-    >
+    <MyProjectContainer>
       <StyledTitle>
         <Title>Project</Title>
       </StyledTitle>
