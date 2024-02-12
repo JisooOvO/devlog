@@ -114,8 +114,6 @@ const Nav = ({ func, navigate }) => {
   useEffect(() => {
     const pathname = window.location.pathname.slice(7);
 
-    console.log(pathname);
-
     itemList.forEach((item) => {
       if (item.url !== "" && pathname.startsWith(item.url))
         item.selected = true;
@@ -199,11 +197,17 @@ const Header = () => {
 
   useEffect(() => {
     if (innerWidth < MD) {
-      const board = document.querySelector("#board");
-      board.classList.remove("unfold");
       setIsHambergurButtonClick(false);
     }
   }, [innerWidth, setIsHambergurButtonClick]);
+
+  useEffect(() => {
+    const board = document.querySelector("#board");
+    const sideBar = document.querySelector("#side-bar");
+
+    if (!sideBar.classList.contains("hidden")) board.classList.remove("unfold");
+    else board.classList.add("unfold");
+  }, [navigate]);
 
   return (
     <>
