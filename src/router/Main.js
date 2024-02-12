@@ -137,7 +137,6 @@ const StyledTitle = styled(IntroContainer)``;
 
 const MyInfoContainer = styled.section`
   position: relative;
-  pointer-events: none;
   margin-bottom: 5rem;
   transform-origin: 50% 50%;
 `;
@@ -320,6 +319,10 @@ const StyledProjectBox = styled(MyInfoBox)`
     width: 3rem;
     border: none;
     background-color: transparent;
+  }
+
+  button:hover {
+    opacity: 0.6;
   }
 
   button:hover {
