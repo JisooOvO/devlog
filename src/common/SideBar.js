@@ -4,6 +4,8 @@ import { categoryList } from "./categoryList";
 import LeftArrowIcon from "../Images/LeftArrowIcon";
 import { useState } from "react";
 import RightArrowIcon from "../Images/RightArrowIcon";
+import { MD } from "./utils";
+import { useSetInnerWidth } from "./hooks";
 
 const SideBarContainer = styled.section`
   width: 22rem;
@@ -183,6 +185,7 @@ const OpenButton = ({ setIsFold }) => {
 };
 
 const SideBar = ({ className }) => {
+  const innerWidth = useSetInnerWidth();
   const [isFold, setIsFold] = useState(false);
 
   function handleFold(event) {
@@ -202,10 +205,14 @@ const SideBar = ({ className }) => {
 
   return (
     <>
-      {isFold ? (
-        <OpenButton setIsFold={setIsFold} />
+      {innerWidth >= MD ? (
+        isFold ? (
+          <OpenButton setIsFold={setIsFold} />
+        ) : (
+          <HideButton setIsFold={setIsFold} />
+        )
       ) : (
-        <HideButton setIsFold={setIsFold} />
+        ""
       )}
       <SideBarContainer id="side-bar" className={className}>
         <CategoryTitle>CATEGORY</CategoryTitle>
