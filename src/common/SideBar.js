@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { categoryList } from "./categoryList";
+import LeftArrowIcon from "../Images/LeftArrowIcon";
+import { useState } from "react";
+import RightArrowIcon from "../Images/RightArrowIcon";
 
 const SideBarContainer = styled.section`
   width: 22rem;
   height: calc(100vh - 7rem);
   position: fixed;
+  z-index: 777;
   top: 7rem;
   padding: 4rem;
   background-color: #f9f9f8;
@@ -16,6 +20,10 @@ const SideBarContainer = styled.section`
     height: 100%;
     overflow-y: visible;
     position: static;
+  }
+
+  &.hidden {
+    display: none;
   }
 `;
 
@@ -28,7 +36,7 @@ const MainTitle = styled(Link)`
   width: fit-content;
   display: flex;
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 400;
   color: rgb(210, 10, 57);
   margin-bottom: 1.5rem;
   & p:hover {
@@ -135,7 +143,48 @@ const Number = styled.span`
   font-size: medium;
 `;
 
+const StyledHideButton = styled.p`
+  font-size: 2rem;
+  color: #447ecd;
+  display: flex;
+  align-items: start;
+  padding: 0;
+  position: fixed;
+  border: none;
+  left: 1rem;
+  top: 7.5rem;
+  z-index: 888;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const HideButton = ({ setIsFold }) => {
+  const handleClick = () => {
+    setIsFold(true);
+    const sideBar = document.querySelector("#side-bar");
+    const board = document.querySelector("#board");
+    sideBar.classList.add("hidden");
+    board.classList.add("unfold");
+  };
+  return <StyledHideButton onClick={handleClick}>◀</StyledHideButton>;
+};
+
+const OpenButton = ({ setIsFold }) => {
+  const handleClick = () => {
+    setIsFold(false);
+    const sideBar = document.querySelector("#side-bar");
+    const board = document.querySelector("#board");
+    sideBar.classList.remove("hidden");
+    board.classList.remove("unfold");
+  };
+  return <StyledHideButton onClick={handleClick}>▶</StyledHideButton>;
+};
+
 const SideBar = ({ className }) => {
+  const [isFold, setIsFold] = useState(false);
+
   function handleFold(event) {
     event.preventDefault();
 
@@ -152,42 +201,49 @@ const SideBar = ({ className }) => {
   }
 
   return (
-    <SideBarContainer className={className}>
-      <CategoryTitle>CATEGORY</CategoryTitle>
-      <Line />
-      {categoryList.map((item) => (
-        <MainCategory id="main" key={item.id}>
-          <MainTitle to={item.url}>
-            <p>{item.name}</p>
-            <Button onClick={handleFold}>▼</Button>
-          </MainTitle>
-          {item.sub?.map((subItem) => (
-            <SubCategory id="main" key={subItem.id}>
-              <SubTitle to={subItem.url}>
-                <p>{subItem.name}</p>
-                <Button onClick={handleFold}>▼</Button>
-              </SubTitle>
-              {subItem.sub?.map((sub) => (
-                <ThirdCategory id="main" key={sub.id}>
-                  <ThirdTitle to={sub.url}>
-                    <p>
-                      {sub.name}
-                      <Number>{"(" + sub.list?.length + ")"}</Number>
-                    </p>
-                    <Button onClick={handleFold}>▼</Button>
-                  </ThirdTitle>
-                  {sub.list?.map((list) => (
-                    <List to={list.url} key={list.id}>
-                      {list.name}
-                    </List>
-                  ))}
-                </ThirdCategory>
-              ))}
-            </SubCategory>
-          ))}
-        </MainCategory>
-      ))}
-    </SideBarContainer>
+    <>
+      {isFold ? (
+        <OpenButton setIsFold={setIsFold} />
+      ) : (
+        <HideButton setIsFold={setIsFold} />
+      )}
+      <SideBarContainer id="side-bar" className={className}>
+        <CategoryTitle>CATEGORY</CategoryTitle>
+        <Line />
+        {categoryList.map((item) => (
+          <MainCategory id="main" key={item.id}>
+            <MainTitle to={item.url}>
+              <p>{item.name}</p>
+              <Button onClick={handleFold}>▼</Button>
+            </MainTitle>
+            {item.sub?.map((subItem) => (
+              <SubCategory id="main" key={subItem.id}>
+                <SubTitle to={subItem.url}>
+                  <p>{subItem.name}</p>
+                  <Button onClick={handleFold}>▼</Button>
+                </SubTitle>
+                {subItem.sub?.map((sub) => (
+                  <ThirdCategory id="main" key={sub.id}>
+                    <ThirdTitle to={sub.url}>
+                      <p>
+                        {sub.name}
+                        <Number>{"(" + sub.list?.length + ")"}</Number>
+                      </p>
+                      <Button onClick={handleFold}>▼</Button>
+                    </ThirdTitle>
+                    {sub.list?.map((list) => (
+                      <List to={list.url} key={list.id}>
+                        {list.name}
+                      </List>
+                    ))}
+                  </ThirdCategory>
+                ))}
+              </SubCategory>
+            ))}
+          </MainCategory>
+        ))}
+      </SideBarContainer>
+    </>
   );
 };
 

@@ -4,6 +4,7 @@ import Main from "./router/Main";
 import { RecoilRoot } from "recoil";
 import { Suspense, lazy } from "react";
 import Loading from "./common/Loading";
+import ScrollButton from "./common/ScrollButton";
 
 const Contents = lazy(() => import("./router/Contents"));
 
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <RecoilRoot>
         <Header />
+        <ScrollButton />
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Main />} />

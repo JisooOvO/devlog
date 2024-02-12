@@ -197,6 +197,8 @@ const Header = () => {
 
   useEffect(() => {
     if (innerWidth < MD) {
+      const board = document.querySelector("#board");
+      board.classList.remove("unfold");
       setIsHambergurButtonClick(false);
     }
   }, [innerWidth, setIsHambergurButtonClick]);

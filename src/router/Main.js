@@ -1,9 +1,31 @@
 import styled, { keyframes } from "styled-components";
-import { Board, Icon } from "../common/styled";
+import { Board, BufferZone, Icon } from "../common/styled";
 import { useEffect, useRef, useState } from "react";
-import { useTyping } from "../common/hooks";
+import { useIntersectionObserver, useTyping } from "../common/hooks";
 import { MD } from "../common/utils";
 import RightArrow from "../Images/RightArrow";
+import ReactIcon from "../Images/ReactIcon";
+import CssIcon from "../Images/CssIcon";
+import JavascriptIcon from "../Images/JavascriptIcon";
+import PythonIcon from "../Images/PythonIcon";
+import RecoilIcon from "../Images/RecoilIcon";
+import TailwindIcon from "../Images/TailwindIcon";
+import StyledComponentIcon from "../Images/StyledComponentIcon";
+import Html5Icon from "../Images/Html5Icon";
+import JavaIcon from "../Images/JavaIcon";
+import SpringIcon from "../Images/SpringIcon";
+import MysqlIcon from "../Images/MysqlIcon";
+import GitIcon from "../Images/GitIcon";
+import GithubIcon from "../Images/GithubIcon";
+
+import project1 from "../Images/project1.gif";
+import project2 from "../Images/project2.gif";
+import project3 from "../Images/project3.png";
+
+import ChartjsIcon from "../Images/ChartjsIcon";
+import ReactrouterdomIcon from "../Images/ReactrouterdomIcon";
+import SocketIcon from "../Images/SocketIcon";
+import NotionIcon from "../Images/NotionIcon";
 
 const fadeIn = keyframes`
   from {
@@ -38,6 +60,18 @@ const standup = keyframes`
     opacity: 1;
     transform: rotateX(0deg);
     pointer-events: all;
+  }
+`;
+
+const closeup = keyframes`
+  0% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    transform: perspective(2500px) rotateX(90deg);
   }
 `;
 
@@ -119,6 +153,7 @@ const IconWrapper = styled.div`
 `;
 
 const DescriptionContainer = styled.div`
+  height: 10rem;
   margin-bottom: 5rem;
 `;
 
@@ -130,8 +165,14 @@ const MyInfoContainer = styled.section`
   pointer-events: none;
   margin-bottom: 5rem;
   transform-origin: 50% 50%;
-  animation: ${standup} 0.4s ease forwards;
-  animation-delay: 8s;
+
+  &.animate {
+    animation: ${standup} 0.4s ease forwards;
+  }
+
+  &.close {
+    animation: ${closeup} 0.4s ease forwards;
+  }
 `;
 
 const MyInfoBox = styled.article`
@@ -148,10 +189,11 @@ const MyInfoBox = styled.article`
 `;
 
 const SubTitle = styled.h2`
-  width: 10rem;
+  width: fit-content;
   font-weight: 600;
   color: #447ecd;
   margin-top: 1rem;
+  padding-bottom: 0.5rem;
   margin-bottom: 1rem;
   border-bottom: 2px solid #447ecd;
 `;
@@ -167,6 +209,7 @@ const InnerBox = styled.div`
 const EduDetail = styled.p`
   position: relative;
   padding: 0.5rem;
+  margin-top: 1rem;
   color: #fd1348;
   border: 2px solid #fd1348;
   border-radius: 1rem;
@@ -215,10 +258,111 @@ const Lists = styled.ul`
 
 const MyStackContainer = styled(MyInfoContainer)`
   z-index: -1;
-  animation-delay: 10s;
+  pointer-events: all;
 `;
 
-const MyProjectContainer = styled(MyStackContainer)``;
+const MyProjectContainer = styled(MyInfoContainer)`
+  pointer-events: all;
+`;
+
+const StackBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #717171;
+`;
+
+const StackIcon = styled.div`
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border: 1px solid #eaeaea;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2);
+`;
+
+const Stacks = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: ${MD + "px"}) {
+    grid-template-columns: none;
+  }
+`;
+
+const StackCategory = styled.div`
+  width: fit-content;
+`;
+
+const StyledProjectBox = styled(MyInfoBox)`
+  position: relative;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+  animation: none;
+
+  #projectInner {
+    display: flex;
+    gap: 2rem;
+    @media (max-width: ${MD + "px"}) {
+      flex-direction: column;
+    }
+  }
+
+  img {
+    width: 20rem;
+    max-height: 25rem;
+    object-fit: fill;
+    border-radius: 1rem;
+  }
+
+  #title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  #dates {
+    margin-bottom: 1rem;
+  }
+
+  #description {
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  #stack {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  button {
+    width: 3rem;
+    border: none;
+    background-color: transparent;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  #button-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0.5rem;
+  }
+`;
 
 const Intro = () => {
   return (
@@ -250,7 +394,7 @@ const Description = () => {
       const text1 = document.querySelector("#text1");
       text1.classList.add("done");
       setTest2(txt.current[1]);
-    }, 4300);
+    }, 4000);
 
     const timefunc3 = setTimeout(() => {
       const text2 = document.querySelector("#text2");
@@ -278,7 +422,17 @@ const Description = () => {
 };
 
 const MyInfo = () => {
+  const { targetRef, isObserve } = useIntersectionObserver({
+    threshold: 0.45,
+  });
+
+  const [isClick, setIsClick] = useState(false);
+
   const handleClick = () => {
+    if (isClick) return;
+
+    setIsClick(true);
+
     const detailBox = document.querySelector("#detailBox");
 
     if (detailBox.classList.contains("close")) {
@@ -290,15 +444,31 @@ const MyInfo = () => {
         detailBox.style.display = "none";
       }, 1000);
     }
+
+    setTimeout(() => {
+      setIsClick(false);
+    }, 1000);
   };
 
   return (
-    <MyInfoContainer>
+    <MyInfoContainer
+      ref={targetRef}
+      className={isObserve ? "animate" : "close"}
+    >
       <StyledTitle>
         <Title>Information</Title>
       </StyledTitle>
       <MyInfoBox>
         <InnerBox>
+          <SubTitle>이름</SubTitle>
+          <p>남지수</p>
+          <SubTitle>생년월일</SubTitle>
+          <p>97. 04. 02</p>
+          <SubTitle>주소지</SubTitle>
+          <p>부산광역시 연제구</p>
+          <SubTitle>Email / Github</SubTitle>
+          <p>fdking1887@naver.com</p>
+          <p>https://github.com/JisooOvO</p>
           <SubTitle>학력</SubTitle>
           <DateWrapper>2014. 03. - 2016. 02.</DateWrapper>
           <p>부산동고등학교 졸업</p>
@@ -366,42 +536,184 @@ const MyInfo = () => {
   );
 };
 
-const MyStack = () => {
+const Stack = ({ icon, title }) => {
   return (
-    <MyStackContainer>
+    <StackBox>
+      <StackIcon>{icon}</StackIcon>
+      <p>{title}</p>
+    </StackBox>
+  );
+};
+
+const MyStack = () => {
+  const { targetRef, isObserve } = useIntersectionObserver({
+    threshold: 0.2,
+  });
+
+  return (
+    <MyStackContainer
+      ref={targetRef}
+      className={isObserve ? "animate" : "close"}
+    >
       <StyledTitle>
         <Title>Stack</Title>
-        <p>스택 내용 넣기</p>
       </StyledTitle>
+      <Stacks>
+        <StackCategory>
+          <SubTitle>FRONTEND</SubTitle>
+          <Stack icon={<Html5Icon />} title={"HTML5"} />
+          <Stack icon={<CssIcon />} title={"CSS3"} />
+          <Stack icon={<JavascriptIcon />} title={"JAVASCRIPT"} />
+          <Stack icon={<ReactIcon />} title={"REACT"} />
+          <Stack icon={<ReactrouterdomIcon />} title={"REACT ROUTER DOM"} />
+          <Stack icon={<RecoilIcon />} title={"RECOIL"} />
+          <Stack icon={<TailwindIcon />} title={"TAILWINDCSS"} />
+          <Stack icon={<StyledComponentIcon />} title={"STYLED-COMPONENTS"} />
+        </StackCategory>
+        <StackCategory>
+          <SubTitle>BACKEND</SubTitle>
+          <Stack icon={<PythonIcon />} title={"PYTHON"} />
+          <Stack icon={<JavaIcon />} title={"JAVA"} />
+          <Stack icon={<SpringIcon />} title={"SPRING BOOT"} />
+          <Stack icon={<MysqlIcon />} title={"MYSQL"} />
+          <Stack icon={<SocketIcon />} title={"STOMP"} />
+        </StackCategory>
+        <StackCategory>
+          <SubTitle>VERSION CONTROL</SubTitle>
+          <Stack icon={<GitIcon />} title={"GIT"} />
+          <Stack icon={<GithubIcon />} title={"GITHUB"} />
+        </StackCategory>
+      </Stacks>
     </MyStackContainer>
   );
 };
 
-const MyProject = () => {
+const ProjectBox = ({ src, title, dates, description, stacks, url }) => {
   return (
-    <MyProjectContainer>
+    <StyledProjectBox>
+      <InnerBox id="projectInner">
+        <img src={src} alt="프로젝트 이미지" />
+        <div>
+          <SubTitle id="title">{title}</SubTitle>
+          <p id="dates">{dates}</p>
+          <p id="description">{description}</p>
+          <ul>
+            {stacks?.map((stack, idx) => (
+              <li key={`stack${idx}key`}>
+                <StackIcon id="stack">{stack}</StackIcon>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div id="button-wrapper">
+          {url[0] && (
+            <button
+              onClick={() => {
+                window.open(url[0], "_blank_");
+              }}
+            >
+              <GithubIcon />
+            </button>
+          )}
+          {url[1] && (
+            <button
+              onClick={() => {
+                window.open(url[1], "_blank_");
+              }}
+            >
+              <NotionIcon />
+            </button>
+          )}
+        </div>
+      </InnerBox>
+    </StyledProjectBox>
+  );
+};
+
+const MyProject = () => {
+  const { targetRef, isObserve } = useIntersectionObserver({
+    threshold: 0.3,
+  });
+
+  return (
+    <MyProjectContainer
+      ref={targetRef}
+      className={isObserve ? "animate" : "close"}
+    >
       <StyledTitle>
         <Title>Project</Title>
-        <p>프로젝트 내용 넣기</p>
       </StyledTitle>
+      <ProjectBox
+        src={project1}
+        title={"식단 검색 및 기록 프로젝트"}
+        dates={"2023.11.14 - 2023.12.12"}
+        description={
+          "유저별로 매일의 식단을 아침/점심/저녁별로 기록하고 월/주별 단위 칼로리/몸무게 동향을 달력 형태로 제공하는 웹 서비스입니다. Open API를 이용하여 영양 정보를 데이터베이스화하였습니다."
+        }
+        stacks={[
+          <ReactIcon />,
+          <ReactrouterdomIcon />,
+          <TailwindIcon />,
+          <SpringIcon />,
+          <MysqlIcon />,
+          <ChartjsIcon />,
+        ]}
+        url={[
+          "https://github.com/JisooOvO/MiniProject-Frontend-DietApp",
+          "https://kminiproject-healthyfit.notion.site/Healthyfit-88fa67f6947c42cfb44add1140190f58",
+        ]}
+      />
+      <ProjectBox
+        src={project2}
+        title={"OCR 기반 영수증 텍스트 추출 프로젝트"}
+        dates={"2023.12.19 ~ 2024.01.19"}
+        description={
+          "OCR을 이용하여 실물 전자 영수증의 텍스트를 추출하고 저장하는 웹 서비스입니다. Web Socket을 사용하여 유저간 채팅 기능이 포함되어있습니다."
+        }
+        stacks={[
+          <ReactIcon />,
+          <ReactrouterdomIcon />,
+          <RecoilIcon />,
+          <TailwindIcon />,
+          <SocketIcon />,
+          <SpringIcon />,
+          <MysqlIcon />,
+          <PythonIcon />,
+        ]}
+        url={[
+          "https://github.com/JisooOvO/DataAnalystProject-Frontend-YoungmanProject",
+          "https://youngmanproject.notion.site/AI-bb1b347feb924633902d73b60667424b",
+        ]}
+      />
+      <ProjectBox
+        src={project3}
+        title={"Github Page 기반 개인 SPA 블로그 제작 프로젝트"}
+        dates={"2023.02.08 ~ Proceeding"}
+        description={
+          "지금 보고계신 웹 페이지는 Jekeyll을 사용하지 않고 Github Page와 React만을 사용하여 제작한 개인 블로그 및 포트폴리오입니다. 포트폴리오와 공부 기록을 업로드합니다."
+        }
+        stacks={[
+          <ReactIcon />,
+          <ReactrouterdomIcon />,
+          <StyledComponentIcon />,
+          <RecoilIcon />,
+          <GithubIcon />,
+        ]}
+        url={["https://github.com/JisooOvO/devlog"]}
+      />
     </MyProjectContainer>
   );
 };
 
 const Main = () => {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, []);
   return (
-    <Board>
+    <Board id="board">
       <Intro />
       <Description />
       <MyInfo />
       <MyStack />
       <MyProject />
+      <BufferZone />
     </Board>
   );
 };

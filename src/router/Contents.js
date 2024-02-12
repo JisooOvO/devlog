@@ -1,4 +1,4 @@
-import { Board } from "../common/styled";
+import { Board, BufferZone } from "../common/styled";
 import MarkdownLayout from "../common/MarkdownLayout";
 import { atomContents } from "../common/atom";
 import { useEffect, useRef } from "react";
@@ -52,9 +52,10 @@ const Contents = () => {
   }, [navigate, first, second, third, fourth, setContents]);
 
   return (
-    <Board>
+    <Board id="board">
       <MarkdownLayout contents={contents}></MarkdownLayout>
       {second && contents ? <Comment /> : ""}
+      <BufferZone />
     </Board>
   );
 };

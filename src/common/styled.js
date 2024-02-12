@@ -32,11 +32,23 @@ export const Board = styled.div`
   margin-left: 37rem;
   margin-right: 8rem;
 
+  &.unfold {
+    margin-left: 8rem;
+  }
+
   @media (max-width: ${MD + "px"}) {
     width: calc(100vw - 8rem);
     margin-left: 4rem;
     margin-right: 4rem;
+
+    &.unfold {
+      margin-left: 4rem;
+    }
   }
+`;
+
+export const BufferZone = styled.div`
+  height: 10rem;
 `;
 
 export const Icon = ({ className, icon, func }) => {
