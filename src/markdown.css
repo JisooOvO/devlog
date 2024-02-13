@@ -15,7 +15,7 @@
 	color: rgb(254, 110, 11);
 	margin-block-start: 2rem;
 	margin-block-end: 2rem;
-	margin-left: 1rem;
+	margin-left: 0.5rem;
 
 }
 
@@ -38,13 +38,21 @@
 .markdown li {
 	font-size: 1.25rem;
     font-weight: 300;
-	margin-left: 3rem;
+	margin-left: 2rem;
     margin-block-start: 2rem;
 	margin-block-end: 2rem;
 }
 
 .markdown li {
 	list-style-type: circle;
+}
+
+.markdown ul ul li {
+	list-style-type: decimal;
+}
+
+.markdown ul ul ul li {
+	list-style-type: disc;
 }
 
 .markdown blockquote > ul > li {
@@ -84,6 +92,17 @@
 	overflow: auto;
 }
 
-.markdown pre > code {
+.markdown code {
+	color: #437ECC;
+	font-weight: 600;
+}
+
+.markdown pre > code span {
+	display: block;
 	line-height: 2rem;
+	color: white;
+}
+
+.markdown .annotation {
+	color: gray;
 }
