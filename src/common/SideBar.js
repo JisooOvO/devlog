@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { categoryList } from "./categoryList";
-import LeftArrowIcon from "../Images/LeftArrowIcon";
 import { useState } from "react";
-import RightArrowIcon from "../Images/RightArrowIcon";
 import { MD } from "./utils";
 import { useSetInnerWidth } from "./hooks";
 import { BufferZone } from "./styled";

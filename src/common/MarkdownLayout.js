@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "../markdown.css";
+import React from "react";
 
 function countSpaces(str) {
   let count = 0;
@@ -16,9 +17,9 @@ function countSpaces(str) {
 const MarkdownLayout = ({ contents }) => {
   const components = {
     code: ({ node, inline, className, children, ...props }) => {
-      const pList = children.split("\n");
-      const newChildren = pList.map((p, idx) => {
-        const classLists = [];
+      const pList = children?.split("\n");
+      const newChildren = pList?.map((p, idx) => {
+        const classLists = ["inline"];
         const tab = countSpaces(p);
 
         if (tab !== 0) {
@@ -29,9 +30,8 @@ const MarkdownLayout = ({ contents }) => {
         if (
           String(p).trim().startsWith("//") ||
           String(p).trim().startsWith("...")
-        ) {
+        )
           classLists.push("annotation");
-        }
 
         return (
           <span
@@ -45,6 +45,7 @@ const MarkdownLayout = ({ contents }) => {
           </span>
         );
       });
+
       return (
         <code className={className} {...props}>
           {newChildren}

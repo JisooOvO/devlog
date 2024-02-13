@@ -178,7 +178,7 @@ const HamburgerNav = ({ setIsHambergurButtonClick }) => {
     const hamburgerNav = document.querySelector("#hamburger-nav");
     hamburgerNav.classList.add("close");
     setIsHambergurButtonClick(false);
-  }, [navigate]);
+  }, [navigate, setIsHambergurButtonClick]);
   return (
     <HamburgerNavContainer id="hamburger-nav" className={"hamburger close"}>
       <SideBar className={"hamburger"} />

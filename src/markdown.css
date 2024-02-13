@@ -1,10 +1,20 @@
 /* MarkDown*/
+.markdown a {
+	color: inherit;
+    margin-block-start: 15px;
+	margin-block-end: 15px;
+}
+
+.markdown a:hover{
+	text-decoration: underline;
+}
+
 .markdown h1 {
 	font-size: 2rem;
 	font-weight: 700;
 	line-height: 1.2;
 	color: rgb(210, 10, 57);
-	margin-block-start: 2rem;
+	margin-block-start: 1.5rem;
 	margin-block-end: 2rem;
 }
 
@@ -13,26 +23,29 @@
 	font-weight: 600;
 	line-height: 1.2;
 	color: rgb(254, 110, 11);
-	margin-block-start: 2rem;
+	margin-block-start: 1.5rem;
 	margin-block-end: 2rem;
-	margin-left: 0.5rem;
-
 }
 
 .markdown h3 {
 	font-size: 1.5rem;
+	font-weight: 600;
 	line-height: 1.2;
 	color: rgb(64, 160, 43);
-	margin-block-start: 2rem;
+	margin-block-start: 1.5rem;
 	margin-block-end: 2rem;
-	margin-left: 1rem;
 }
+
+.markdown h3::before{
+	content: "- ";
+}
+
 
 .markdown p {
 	font-size: 1.25rem;
     font-weight: 300;
-    margin-block-start: 15px;
-	margin-block-end: 15px;
+    margin-block-start: 2rem;
+	margin-block-end: 2rem;
 }
 
 .markdown li {
@@ -48,11 +61,11 @@
 }
 
 .markdown ul ul li {
-	list-style-type: decimal;
+	list-style-type: disc;
 }
 
 .markdown ul ul ul li {
-	list-style-type: disc;
+	list-style-type: square;
 }
 
 .markdown blockquote > ul > li {
@@ -63,13 +76,6 @@
 .markdown hr {
 	margin-block-start: 2rem;
 	margin-block-end: 2rem;
-}
-
-.markdown a {
-	color: rgb(254, 110, 11);
-    text-decoration: underline;
-    margin-block-start: 15px;
-	margin-block-end: 15px;
 }
 
 .markdown table {
@@ -84,7 +90,7 @@
 	margin-block-start: 15px;
 	margin-block-end: 15px;
 	padding: 2rem;
-	background-color: black;
+	background-color: #2a2a2a;
 	border: .3em solid #7a6651;
 	border-radius: .5em;
 	box-shadow: 1px 1px .5em #000 inset;
@@ -94,15 +100,23 @@
 
 .markdown code {
 	color: #437ECC;
-	font-weight: 600;
 }
 
-.markdown pre > code span {
-	display: block;
+.markdown pre code {
 	line-height: 2rem;
+	font-size: larger;
 	color: white;
 }
 
-.markdown .annotation {
+.markdown pre > code .inline {
+	display: block;
+}
+
+.markdown pre > code .bracket {
+	color: rgb(255, 153, 0);
+}
+
+.markdown pre > code .annotation {
 	color: gray;
 }
+
