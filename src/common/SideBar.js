@@ -6,6 +6,7 @@ import { useState } from "react";
 import RightArrowIcon from "../Images/RightArrowIcon";
 import { MD } from "./utils";
 import { useSetInnerWidth } from "./hooks";
+import { BufferZone } from "./styled";
 
 const SideBarContainer = styled.section`
   width: 22rem;
@@ -249,6 +250,7 @@ const SideBar = ({ className }) => {
             ))}
           </MainCategory>
         ))}
+        <BufferZone />
       </SideBarContainer>
     </>
   );

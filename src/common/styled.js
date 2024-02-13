@@ -27,7 +27,6 @@ const IconWrapper = styled.div`
 `;
 
 export const Board = styled.div`
-  width: fit-content;
   margin-top: 11rem;
   margin-left: 37rem;
   margin-right: 8rem;

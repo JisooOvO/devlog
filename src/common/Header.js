@@ -172,9 +172,15 @@ const HamburgerButton = ({
   );
 };
 
-const HamburgerNav = () => {
+const HamburgerNav = ({ setIsHambergurButtonClick }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const hamburgerNav = document.querySelector("#hamburger-nav");
+    hamburgerNav.classList.add("close");
+    setIsHambergurButtonClick(false);
+  }, [navigate]);
   return (
-    <HamburgerNavContainer className={"hamburger close"}>
+    <HamburgerNavContainer id="hamburger-nav" className={"hamburger close"}>
       <SideBar className={"hamburger"} />
     </HamburgerNavContainer>
   );
@@ -226,7 +232,11 @@ const Header = () => {
           />
         )}
       </HeaderContainer>
-      {innerWidth >= MD ? <SideBar /> : <HamburgerNav />}
+      {innerWidth >= MD ? (
+        <SideBar />
+      ) : (
+        <HamburgerNav setIsHambergurButtonClick={setIsHambergurButtonClick} />
+      )}
     </>
   );
 };

@@ -4,6 +4,13 @@ import { atomContents } from "../common/atom";
 import { useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import styled from "styled-components";
+
+const StyledCommnet = styled.div`
+  .utterances {
+    margin: 0;
+  }
+`;
 
 const Comment = () => {
   const commentsEl = useRef(null);
@@ -19,7 +26,7 @@ const Comment = () => {
     commentsEl.current?.appendChild(scriptEl);
   }, []);
 
-  return <div ref={commentsEl}></div>;
+  return <StyledCommnet ref={commentsEl}></StyledCommnet>;
 };
 
 const Contents = () => {
