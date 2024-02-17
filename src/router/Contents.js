@@ -1,7 +1,7 @@
 import { Board, BufferZone } from "../common/styled";
 import MarkdownLayout from "../common/MarkdownLayout";
 import { atomContents } from "../common/atom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
@@ -60,11 +60,180 @@ const Contents = () => {
 
   return (
     <Board id="board">
+      {fourth && contents ? <Index contents={contents} /> : ""}
       <MarkdownLayout contents={contents}></MarkdownLayout>
-      {second && contents ? <Comment /> : ""}
+      {fourth && contents ? <Comment /> : ""}
       <BufferZone />
     </Board>
   );
 };
 
 export default Contents;
+
+const StyledIndex = styled.ul`
+  height: 20rem;
+  padding: 1rem;
+  overflow-y: auto;
+  position: fixed;
+  font-size: small;
+  right: 0;
+  z-index: 100;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #04d4ff;
+  }
+`;
+
+const StyledH1 = styled.li`
+  color: rgb(210, 10, 57);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
+
+  p {
+    width: 9rem;
+    padding-right: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 100;
+    text-overflow: ellipsis;
+  }
+
+  .hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  p:hover {
+    text-decoration: underline;
+  }
+
+  div {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: rgb(210, 10, 57);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const StyledH2 = styled(StyledH1)`
+  color: rgb(254, 110, 11);
+  margin-left: 0.5rem;
+
+  div {
+    background-color: rgb(254, 110, 11);
+  }
+`;
+
+const StyledH3 = styled(StyledH1)`
+  color: rgb(64, 160, 43);
+  margin-left: 1rem;
+
+  div {
+    background-color: rgb(64, 160, 43);
+  }
+`;
+
+const Index = ({ contents }) => {
+  const [index, setIndex] = useState([]);
+
+  const handleMouseEnter = () => {
+    const index = document.querySelector("#index");
+    const pList = index.querySelectorAll("p");
+
+    pList.forEach((p) => p.classList.remove("hidden"));
+  };
+
+  const handleMouseLeave = () => {
+    const index = document.querySelector("#index");
+    const pList = index.querySelectorAll("p");
+
+    pList.forEach((p) => p.classList.add("hidden"));
+  };
+
+  useEffect(() => {
+    const handleClick = (node) => {
+      node.scrollIntoView({ behavior: "smooth" });
+    };
+
+    const hTags = document.querySelectorAll("h1,h2,h3");
+    hTags.forEach((node, index) => {
+      let comp;
+      switch (node.tagName) {
+        case "H1":
+          comp = (
+            <StyledH1 key={`index${index}`}>
+              <p
+                className="hidden"
+                onClick={() => {
+                  handleClick(node);
+                }}
+              >
+                {node.textContent}
+              </p>
+              <div></div>
+            </StyledH1>
+          );
+          break;
+        case "H2":
+          comp = (
+            <StyledH2 key={`index${index}`}>
+              <p
+                className="hidden"
+                onClick={() => {
+                  handleClick(node);
+                }}
+              >
+                {node.textContent}
+              </p>
+              <div></div>
+            </StyledH2>
+          );
+          break;
+        case "H3":
+          comp = (
+            <StyledH3 key={`index${index}`}>
+              <p
+                className="hidden"
+                onClick={() => {
+                  handleClick(node);
+                }}
+              >
+                {node.textContent}
+              </p>
+              <div></div>
+            </StyledH3>
+          );
+          break;
+        default:
+          break;
+      }
+      setIndex((prev) => [...prev, comp]);
+    });
+
+    return () => {
+      setIndex("");
+    };
+  }, [contents]);
+
+  return (
+    <StyledIndex
+      id="index"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {index}
+    </StyledIndex>
+  );
+};

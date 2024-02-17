@@ -27,7 +27,7 @@ const IconWrapper = styled.div`
 `;
 
 export const Board = styled.div`
-  margin-top: 11rem;
+  margin-top: 4rem;
   margin-left: 37rem;
   margin-right: 8rem;
 
@@ -36,12 +36,12 @@ export const Board = styled.div`
   }
 
   @media (max-width: ${MD + "px"}) {
-    width: calc(100vw - 8rem);
-    margin-left: 4rem;
-    margin-right: 4rem;
+    width: calc(100vw - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
 
     &.unfold {
-      margin-left: 4rem;
+      margin-left: 1rem;
     }
   }
 `;

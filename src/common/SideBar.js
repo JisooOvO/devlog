@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { categoryList } from "./categoryList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MD } from "./utils";
 import { useSetInnerWidth } from "./hooks";
 import { BufferZone } from "./styled";
+import { useRecoilValue } from "recoil";
+import { atomIsObserve } from "./atom";
 
 const SideBarContainer = styled.section`
   width: 22rem;
-  height: calc(100vh - 7rem);
+  height: calc(100vh);
   position: fixed;
   z-index: 777;
-  top: 7rem;
+  top: ${(props) => (props.$isObserve ? "7rem" : "0")};
   padding: 4rem;
   background-color: #f9f9f8;
   overflow-y: scroll;
@@ -153,7 +155,7 @@ const StyledHideButton = styled.p`
   position: fixed;
   border: none;
   left: 1rem;
-  top: 7.5rem;
+  top: ${(props) => (props.$isObserve === false ? "0.5rem" : "7.5rem")};
   z-index: 888;
 
   &:hover {
@@ -162,6 +164,7 @@ const StyledHideButton = styled.p`
 `;
 
 const HideButton = ({ setIsFold }) => {
+  const isObserve = useRecoilValue(atomIsObserve);
   const handleClick = () => {
     setIsFold(true);
     const sideBar = document.querySelector("#side-bar");
@@ -169,10 +172,15 @@ const HideButton = ({ setIsFold }) => {
     sideBar.classList.add("hidden");
     board.classList.add("unfold");
   };
-  return <StyledHideButton onClick={handleClick}>◀</StyledHideButton>;
+  return (
+    <StyledHideButton $isObserve={isObserve} onClick={handleClick}>
+      ◀
+    </StyledHideButton>
+  );
 };
 
 const OpenButton = ({ setIsFold }) => {
+  const isObserve = useRecoilValue(atomIsObserve);
   const handleClick = () => {
     setIsFold(false);
     const sideBar = document.querySelector("#side-bar");
@@ -180,12 +188,25 @@ const OpenButton = ({ setIsFold }) => {
     sideBar.classList.remove("hidden");
     board.classList.remove("unfold");
   };
-  return <StyledHideButton onClick={handleClick}>▶</StyledHideButton>;
+  return (
+    <StyledHideButton $isObserve={isObserve} onClick={handleClick}>
+      ▶
+    </StyledHideButton>
+  );
 };
 
 const SideBar = ({ className }) => {
   const innerWidth = useSetInnerWidth();
   const [isFold, setIsFold] = useState(false);
+  const isObserve = useRecoilValue(atomIsObserve);
+
+  useEffect(() => {
+    const board = document.querySelector("#board");
+    const sideBar = document.querySelector("#side-bar");
+    if (board?.classList.contains("unfold")) {
+      sideBar.classList.add("hidden");
+    }
+  }, [isObserve]);
 
   function handleFold(event) {
     event.preventDefault();
@@ -213,7 +234,11 @@ const SideBar = ({ className }) => {
       ) : (
         ""
       )}
-      <SideBarContainer id="side-bar" className={className}>
+      <SideBarContainer
+        id="side-bar"
+        className={className}
+        $isObserve={isObserve}
+      >
         <CategoryTitle>CATEGORY</CategoryTitle>
         <Line />
         {categoryList.map((item) => (

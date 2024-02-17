@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useSetInnerWidth } from "./hooks";
+import { useIntersectionObserver, useSetInnerWidth } from "./hooks";
 import { MD } from "./utils";
 import MenuIcon from "../Images/MenuIcon";
 import { Icon } from "./styled";
-import { useRecoilState } from "recoil";
-import { atomIsHambergurButtonClick } from "./atom";
+import { useRecoilCallback, useRecoilState, useSetRecoilState } from "recoil";
+import { atomIsHambergurButtonClick, atomIsObserve } from "./atom";
 import CloseIcon from "../Images/CloseIcon";
 import { useCallback, useEffect, useState } from "react";
 import SideBar from "./SideBar";
@@ -34,12 +34,11 @@ const StlyedLink = styled(Link)`
 `;
 
 const HeaderContainer = styled.header`
-  width: calc(100vw - 8rem);
+  width: calc(100vw - 4rem);
   height: 5rem;
-  position: fixed;
-  top: 0;
+  position: relative;
   z-index: 999;
-  padding: 1rem 4rem 1rem 4rem;
+  padding: 1rem 2rem;
   border-bottom: 1px solid #d9d9d9;
   background: linear-gradient(to right, rgb(67, 124, 205), rgb(69, 214, 202));
   display: flex;
@@ -72,12 +71,12 @@ const NavList = styled(Link)`
 const HamburgerNavContainer = styled.div`
   width: 100%;
   height: 40rem;
-  position: fixed;
+  position: absolute;
   top: 0;
   background-color: #f9f9f8;
   overflow-y: scroll;
   overflow-x: hidden;
-  z-index: 888;
+  z-index: 777;
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 
   &.open {
@@ -143,7 +142,7 @@ const HamburgerButton = ({
   isHambergurButtonClick,
   setIsHambergurButtonClick,
 }) => {
-  function handleClick() {
+  const handleClick = useCallback(() => {
     const menu = document.querySelector(".menu");
     const hamburger = document.querySelector(".hamburger");
 
@@ -161,7 +160,16 @@ const HamburgerButton = ({
       setIsHambergurButtonClick(!isHambergurButtonClick);
       menu.classList.remove("clicked");
     }, 500);
-  }
+  }, [isHambergurButtonClick, setIsHambergurButtonClick]);
+
+  useEffect(() => {
+    const board = document.querySelector("#board");
+    board?.addEventListener("click", handleClick);
+
+    return () => {
+      board?.removeEventListener("click", handleClick);
+    };
+  }, [handleClick]);
 
   return (
     <Icon
@@ -187,6 +195,10 @@ const HamburgerNav = ({ setIsHambergurButtonClick }) => {
 };
 
 const Header = () => {
+  const { targetRef, isObserve } = useIntersectionObserver({
+    threshold: 0.5,
+  });
+  const setIsObserve = useSetRecoilState(atomIsObserve);
   const innerWidth = useSetInnerWidth();
   const [isHambergurButtonClick, setIsHambergurButtonClick] = useRecoilState(
     atomIsHambergurButtonClick,
@@ -200,6 +212,10 @@ const Header = () => {
       window.open("https://github.com/JisooOvO", "_blank");
     }
   }, []);
+
+  useEffect(() => {
+    setIsObserve(isObserve);
+  }, [isObserve, setIsObserve]);
 
   useEffect(() => {
     if (innerWidth < MD) {
@@ -218,7 +234,7 @@ const Header = () => {
 
   return (
     <>
-      <HeaderContainer>
+      <HeaderContainer ref={targetRef}>
         <StlyedLink id="home" to={"/"} onClick={handleClick}>
           <p className="blog-name">Jisoo's Note</p>
           <p className="description">https://github.com/JisooOvO</p>

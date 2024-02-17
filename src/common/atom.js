@@ -9,3 +9,8 @@ export const atomContents = atom({
   key: "contents",
   default: "",
 });
+
+export const atomIsObserve = atom({
+  key: "isObserve",
+  default: true,
+});
