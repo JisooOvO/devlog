@@ -531,16 +531,16 @@ const MyStack = () => {
         </StackCategory>
         <StackCategory>
           <SubTitle>BACKEND</SubTitle>
-          <Stack icon={<PythonIcon />} title={"PYTHON"} />
           <Stack icon={<JavaIcon />} title={"JAVA"} />
           <Stack icon={<SpringIcon />} title={"SPRING BOOT"} />
           <Stack icon={<MysqlIcon />} title={"MYSQL"} />
-          <Stack icon={<SocketIcon />} title={"STOMP"} />
         </StackCategory>
         <StackCategory>
-          <SubTitle>VERSION CONTROL</SubTitle>
+          <SubTitle>ETC</SubTitle>
           <Stack icon={<GitIcon />} title={"GIT"} />
           <Stack icon={<GithubIcon />} title={"GITHUB"} />
+          <Stack icon={<PythonIcon />} title={"PYTHON"} />
+          <Stack icon={<SocketIcon />} title={"STOMP"} />
         </StackCategory>
       </Stacks>
     </MyStackContainer>
@@ -568,7 +568,7 @@ const ProjectBox = ({ src, title, dates, description, stacks, url }) => {
           {url[0] && (
             <button
               onClick={() => {
-                window.open(url[0], "_blank_");
+                window.open(url[0], "_blank");
               }}
             >
               <GithubIcon />
@@ -577,7 +577,7 @@ const ProjectBox = ({ src, title, dates, description, stacks, url }) => {
           {url[1] && (
             <button
               onClick={() => {
-                window.open(url[1], "_blank_");
+                window.open(url[1], "_blank");
               }}
             >
               <NotionIcon />

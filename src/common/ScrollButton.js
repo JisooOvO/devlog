@@ -16,7 +16,7 @@ const StyledScrollButton = styled.button`
 
   &:hover {
     cursor: pointer;
-    opacity: 0.7;
+    transform: scale(1.1);
   }
 `;
 

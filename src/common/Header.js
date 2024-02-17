@@ -4,7 +4,7 @@ import { useIntersectionObserver, useSetInnerWidth } from "./hooks";
 import { MD } from "./utils";
 import MenuIcon from "../Images/MenuIcon";
 import { Icon } from "./styled";
-import { useRecoilCallback, useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { atomIsHambergurButtonClick, atomIsObserve } from "./atom";
 import CloseIcon from "../Images/CloseIcon";
 import { useCallback, useEffect, useState } from "react";
@@ -79,6 +79,10 @@ const HamburgerNavContainer = styled.div`
   z-index: 777;
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
   &.open {
     transform: translateY(7rem);
     transition-duration: 1s;
@@ -142,25 +146,31 @@ const HamburgerButton = ({
   isHambergurButtonClick,
   setIsHambergurButtonClick,
 }) => {
-  const handleClick = useCallback(() => {
-    const menu = document.querySelector(".menu");
-    const hamburger = document.querySelector(".hamburger");
+  const handleClick = useCallback(
+    (event) => {
+      const menu = document.querySelector(".menu");
+      const hamburger = document.querySelector(".hamburger");
+      const flag = event.target.closest(".menu");
 
-    menu.classList.add("clicked");
+      if (hamburger.classList.contains("close") && !flag) return;
 
-    if (!isHambergurButtonClick) {
-      hamburger.classList.add("open");
-      hamburger.classList.remove("close");
-    } else {
-      hamburger.classList.remove("open");
-      hamburger.classList.add("close");
-    }
+      menu.classList.add("clicked");
 
-    setTimeout(() => {
-      setIsHambergurButtonClick(!isHambergurButtonClick);
-      menu.classList.remove("clicked");
-    }, 500);
-  }, [isHambergurButtonClick, setIsHambergurButtonClick]);
+      if (!isHambergurButtonClick && flag) {
+        hamburger.classList.add("open");
+        hamburger.classList.remove("close");
+      } else {
+        hamburger.classList.remove("open");
+        hamburger.classList.add("close");
+      }
+
+      setTimeout(() => {
+        setIsHambergurButtonClick(!isHambergurButtonClick);
+        menu.classList.remove("clicked");
+      }, 500);
+    },
+    [isHambergurButtonClick, setIsHambergurButtonClick],
+  );
 
   useEffect(() => {
     const board = document.querySelector("#board");

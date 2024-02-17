@@ -56,7 +56,7 @@ export const categoryList = [
               },
               {
                 id: 9,
-                name: "프로퍼티와 프로토타입",
+                name: "프로퍼티 플래그와 프로토타입",
                 url: "/language/javascript/basic/9",
               },
               {
