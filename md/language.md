@@ -1,12 +1,12 @@
 # PROGRAMMING LANGUAGE
 
-## [JAVASCRIPT](http://localhost:3000/devlog/language/javascript)
+## JAVASCRIPT
 
-### [BASIC](http://localhost:3000/devlog/language/javascript/basic)
+### BASIC
 
-### [EVENT / INTERFACE](http://localhost:3000/devlog/language/javascript/event&interface)
+### EVENT / INTERFACE
 
-### [NETWORK / FILE](http://localhost:3000/devlog/language/javascript/network&file)
+### NETWORK / FILE
 
 ### BROWSER DATA
 
