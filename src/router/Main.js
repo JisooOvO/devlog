@@ -586,9 +586,9 @@ const ProjectBox = ({ src, title, dates, description, stacks, url }) => {
 };
 
 const MyProject = () => {
-  const url1 = useImportBlob("/Images/project1.gif");
-  const url2 = useImportBlob("/Images/project2.gif");
-  const url3 = useImportBlob("/Images/project3.png");
+  const url1 = useImportBlob("/images/project1.gif");
+  const url2 = useImportBlob("/images/project2.gif");
+  const url3 = useImportBlob("/images/project3.png");
 
   return (
     <MyProjectContainer>
