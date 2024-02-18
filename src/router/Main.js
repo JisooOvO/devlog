@@ -551,7 +551,7 @@ const ProjectBox = ({ src, title, dates, description, stacks, url }) => {
   return (
     <StyledProjectBox>
       <InnerBox id="projectInner">
-        <img src={src} alt="프로젝트 이미지" />
+        <img src={src} alt="프로젝트 이미지" loading="lazy" />
         <div>
           <SubTitle id="title">{title}</SubTitle>
           <p id="dates">{dates}</p>
