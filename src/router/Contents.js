@@ -4,7 +4,7 @@ import { atomContents } from "../common/atom";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Loading from "../common/Loading";
 
 const StyledCommnet = styled.div`
@@ -105,6 +105,26 @@ const Comment = () => {
   return <StyledCommnet ref={commentsEl}></StyledCommnet>;
 };
 
+const blink = keyframes`
+  0%{
+    color: #000;
+  }
+  100%{
+    color: #fff;
+  }
+`;
+
+export const LoadingMessage = styled.p`
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 5rem;
+  animation: ${blink} 1s ease-in alternate-reverse infinite;
+`;
+
+const InnerLoading = () => {
+  return <LoadingMessage>파일을 불러오고 있습니다.</LoadingMessage>;
+};
+
 const Contents = () => {
   const [contents, setContents] = useRecoilState(atomContents);
   const navigate = useNavigate();
@@ -138,7 +158,7 @@ const Contents = () => {
     <Board id="board">
       <Suspense fallback={<Loading />}>
         {fourth && contents ? <Index contents={contents} /> : ""}
-        <MarkdownLayout contents={contents}></MarkdownLayout>
+        {contents ? <MarkdownLayout contents={contents} /> : <InnerLoading />}
         {fourth && contents ? <Comment /> : ""}
         <BufferZone />
       </Suspense>
