@@ -44,8 +44,8 @@
 .markdown p {
 	font-size: 1.25rem;
     font-weight: 300;
-    margin-block-start: 2rem;
-	margin-block-end: 2rem;
+    margin-block-start: 1rem;
+	margin-block-end: 1rem;
 }
 
 .markdown li {
@@ -76,12 +76,6 @@
 .markdown hr {
 	margin-block-start: 2rem;
 	margin-block-end: 2rem;
-}
-
-.markdown table {
-    width: 100%;
-    border: 1px solid #ababab;
-	table-layout: fixed;
 }
 
 .markdown pre {
@@ -120,3 +114,28 @@
 	color: gray;
 }
 
+.markdown table{
+	width: 100%;
+	table-layout: fixed;
+	box-sizing: border-box;
+    border: 1px solid #ababab;
+}
+
+.markdown th, td {
+	text-align: center;
+	height: 2rem;
+	vertical-align: middle;
+	border: 1px solid #ababab;
+	padding: 1rem;
+
+}
+
+.markdown th {
+	background-color: #437ECC;
+	color: white;
+	font-weight: 600;
+}
+
+.markdown td {
+	overflow-wrap: break-word;
+}

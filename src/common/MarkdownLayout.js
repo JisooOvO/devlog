@@ -20,6 +20,11 @@ const MarkdownLayout = ({ contents }) => {
       const pList = children?.split("\n");
       const newChildren = pList?.map((p, idx) => {
         const classLists = ["inline"];
+
+        if (String(p).trim().length === 0) {
+          return <br key={idx} />;
+        }
+
         const tab = countSpaces(p);
 
         if (tab !== 0) {

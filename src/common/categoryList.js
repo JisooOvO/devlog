@@ -76,7 +76,7 @@ export const categoryList = [
               },
               {
                 id: 13,
-                name: "비동기 동작, 프로미스",
+                name: "콜백, 프로미스",
                 url: "/language/javascript/basic/13",
               },
               {
