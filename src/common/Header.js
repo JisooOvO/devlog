@@ -237,10 +237,12 @@ const Header = () => {
     const board = document.querySelector("#board");
     const sideBar = document.querySelector("#side-bar");
 
-    if (!sideBar?.classList.contains("hidden"))
+    if (!sideBar?.classList.contains("hidden")) {
       board?.classList.remove("unfold");
-    else board?.classList.add("unfold");
-  }, [navigate, innerWidth]);
+    } else {
+      board?.classList.add("unfold");
+    }
+  }, [navigate]);
 
   return (
     <>

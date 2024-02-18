@@ -208,6 +208,13 @@ const SideBar = ({ className }) => {
     }
   }, [isObserve]);
 
+  useEffect(() => {
+    const sideBar = document.querySelector("#side-bar");
+    if (sideBar.classList.contains("hidden")) {
+      setIsFold(true);
+    }
+  }, [innerWidth]);
+
   function handleFold(event) {
     event.preventDefault();
 

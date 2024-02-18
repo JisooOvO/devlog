@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled, { keyframes } from "styled-components";
 import Loading from "../common/Loading";
+import { useSetInnerWidth } from "../common/hooks";
 
 const StyledCommnet = styled.div`
   .utterances {
@@ -129,6 +130,18 @@ const Contents = () => {
   const [contents, setContents] = useRecoilState(atomContents);
   const navigate = useNavigate();
   const { first, second, third, fourth } = useParams();
+  // const innerWidth = useSetInnerWidth();
+
+  useEffect(() => {
+    const board = document.querySelector("#board");
+    const sideBar = document.querySelector("#side-bar");
+
+    if (!sideBar?.classList.contains("hidden")) {
+      board?.classList.remove("unfold");
+    } else {
+      board?.classList.add("unfold");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     let url = `${first ? first : ""}${second ? "/" + second : ""}${
