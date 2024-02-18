@@ -1,10 +1,11 @@
 import { Board, BufferZone } from "../common/styled";
 import MarkdownLayout from "../common/MarkdownLayout";
 import { atomContents } from "../common/atom";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import Loading from "../common/Loading";
 
 const StyledCommnet = styled.div`
   .utterances {
@@ -135,10 +136,12 @@ const Contents = () => {
 
   return (
     <Board id="board">
-      {fourth && contents ? <Index contents={contents} /> : ""}
-      <MarkdownLayout contents={contents}></MarkdownLayout>
-      {fourth && contents ? <Comment /> : ""}
-      <BufferZone />
+      <Suspense fallback={<Loading />}>
+        {fourth && contents ? <Index contents={contents} /> : ""}
+        <MarkdownLayout contents={contents}></MarkdownLayout>
+        {fourth && contents ? <Comment /> : ""}
+        <BufferZone />
+      </Suspense>
     </Board>
   );
 };

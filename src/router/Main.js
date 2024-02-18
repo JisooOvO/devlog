@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { Board, BufferZone, Icon } from "../common/styled";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useTyping } from "../common/hooks";
 import { MD } from "../common/utils";
 import RightArrow from "../Images/RightArrow";
@@ -26,6 +26,7 @@ import ChartjsIcon from "../Images/ChartjsIcon";
 import ReactrouterdomIcon from "../Images/ReactrouterdomIcon";
 import SocketIcon from "../Images/SocketIcon";
 import NotionIcon from "../Images/NotionIcon";
+import Loading from "../common/Loading";
 
 const fadeIn = keyframes`
   from {
@@ -664,7 +665,9 @@ const Main = () => {
       <Description />
       <MyInfo />
       <MyStack />
-      <MyProject />
+      <Suspense fallback={<Loading />}>
+        <MyProject />
+      </Suspense>
       <BufferZone />
     </Board>
   );
