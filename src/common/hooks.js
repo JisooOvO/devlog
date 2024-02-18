@@ -58,3 +58,15 @@ export const useIntersectionObserver = (options) => {
 
   return { targetRef, isObserve };
 };
+
+export const useImportBlob = (link) => {
+  const [url, setURL] = useState("");
+  useEffect(() => {
+    fetch(process.env.PUBLIC_URL + link)
+      .then((res) => res.blob())
+      .then((data) => setURL(URL.createObjectURL(data)))
+      .catch(console.log);
+  }, [link]);
+
+  return url;
+};

@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { Board, BufferZone, Icon } from "../common/styled";
 import { Suspense, useEffect, useRef, useState } from "react";
-import { useTyping } from "../common/hooks";
+import { useImportBlob, useTyping } from "../common/hooks";
 import { MD } from "../common/utils";
 import RightArrow from "../Images/RightArrow";
 import ReactIcon from "../Images/ReactIcon";
@@ -17,11 +17,6 @@ import SpringIcon from "../Images/SpringIcon";
 import MysqlIcon from "../Images/MysqlIcon";
 import GitIcon from "../Images/GitIcon";
 import GithubIcon from "../Images/GithubIcon";
-
-import project1 from "../Images/project1.gif";
-import project2 from "../Images/project2.gif";
-import project3 from "../Images/project3.png";
-
 import ChartjsIcon from "../Images/ChartjsIcon";
 import ReactrouterdomIcon from "../Images/ReactrouterdomIcon";
 import SocketIcon from "../Images/SocketIcon";
@@ -591,69 +586,79 @@ const ProjectBox = ({ src, title, dates, description, stacks, url }) => {
 };
 
 const MyProject = () => {
+  const url1 = useImportBlob("/Images/project1.gif");
+  const url2 = useImportBlob("/Images/project2.gif");
+  const url3 = useImportBlob("/Images/project3.png");
+
   return (
     <MyProjectContainer>
       <StyledTitle>
         <Title>Project</Title>
       </StyledTitle>
-      <ProjectBox
-        src={project1}
-        title={"식단 검색 및 기록 프로젝트"}
-        dates={"2023.11.14 - 2023.12.12"}
-        description={
-          "유저별로 매일의 식단을 아침/점심/저녁별로 기록하고 월/주별 단위 칼로리/몸무게 동향을 달력 형태로 제공하는 웹 서비스입니다. Open API를 이용하여 영양 정보를 데이터베이스화하였습니다."
-        }
-        stacks={[
-          <ReactIcon />,
-          <ReactrouterdomIcon />,
-          <TailwindIcon />,
-          <SpringIcon />,
-          <MysqlIcon />,
-          <ChartjsIcon />,
-        ]}
-        url={[
-          "https://github.com/JisooOvO/MiniProject-Frontend-DietApp",
-          "https://kminiproject-healthyfit.notion.site/Healthyfit-88fa67f6947c42cfb44add1140190f58",
-        ]}
-      />
-      <ProjectBox
-        src={project2}
-        title={"OCR 기반 영수증 텍스트 추출 프로젝트"}
-        dates={"2023.12.19 ~ 2024.01.19"}
-        description={
-          "OCR을 이용하여 실물 전자 영수증의 텍스트를 추출하고 저장하는 웹 서비스입니다. Web Socket을 사용하여 유저간 채팅 기능이 포함되어있습니다."
-        }
-        stacks={[
-          <ReactIcon />,
-          <ReactrouterdomIcon />,
-          <RecoilIcon />,
-          <TailwindIcon />,
-          <SocketIcon />,
-          <SpringIcon />,
-          <MysqlIcon />,
-          <PythonIcon />,
-        ]}
-        url={[
-          "https://github.com/JisooOvO/DataAnalystProject-Frontend-YoungmanProject",
-          "https://youngmanproject.notion.site/AI-bb1b347feb924633902d73b60667424b",
-        ]}
-      />
-      <ProjectBox
-        src={project3}
-        title={"Github Page 기반 개인 SPA 블로그 제작 프로젝트"}
-        dates={"2023.02.08 ~ Proceeding"}
-        description={
-          "지금 보고계신 웹 페이지는 Jekeyll을 사용하지 않고 Github Page와 React만을 사용하여 제작한 개인 블로그 및 포트폴리오입니다. 포트폴리오와 공부 기록을 업로드합니다. Single Page 방식이므로 Home URL에만 URL 직접 접속이 가능합니다."
-        }
-        stacks={[
-          <ReactIcon />,
-          <ReactrouterdomIcon />,
-          <StyledComponentIcon />,
-          <RecoilIcon />,
-          <GithubIcon />,
-        ]}
-        url={["https://github.com/JisooOvO/devlog"]}
-      />
+      <Suspense fallback={<Loading />}>
+        <ProjectBox
+          src={url1}
+          title={"식단 검색 및 기록 프로젝트"}
+          dates={"2023.11.14 - 2023.12.12"}
+          description={
+            "유저별로 매일의 식단을 아침/점심/저녁별로 기록하고 월/주별 단위 칼로리/몸무게 동향을 달력 형태로 제공하는 웹 서비스입니다. Open API를 이용하여 영양 정보를 데이터베이스화하였습니다."
+          }
+          stacks={[
+            <ReactIcon />,
+            <ReactrouterdomIcon />,
+            <TailwindIcon />,
+            <SpringIcon />,
+            <MysqlIcon />,
+            <ChartjsIcon />,
+          ]}
+          url={[
+            "https://github.com/JisooOvO/MiniProject-Frontend-DietApp",
+            "https://kminiproject-healthyfit.notion.site/Healthyfit-88fa67f6947c42cfb44add1140190f58",
+          ]}
+        />
+      </Suspense>
+      <Suspense fallback={<Loading />}>
+        <ProjectBox
+          src={url2}
+          title={"OCR 기반 영수증 텍스트 추출 프로젝트"}
+          dates={"2023.12.19 ~ 2024.01.19"}
+          description={
+            "OCR을 이용하여 실물 전자 영수증의 텍스트를 추출하고 저장하는 웹 서비스입니다. Web Socket을 사용하여 유저간 채팅 기능이 포함되어있습니다."
+          }
+          stacks={[
+            <ReactIcon />,
+            <ReactrouterdomIcon />,
+            <RecoilIcon />,
+            <TailwindIcon />,
+            <SocketIcon />,
+            <SpringIcon />,
+            <MysqlIcon />,
+            <PythonIcon />,
+          ]}
+          url={[
+            "https://github.com/JisooOvO/DataAnalystProject-Frontend-YoungmanProject",
+            "https://youngmanproject.notion.site/AI-bb1b347feb924633902d73b60667424b",
+          ]}
+        />
+      </Suspense>
+      <Suspense fallback={<Loading />}>
+        <ProjectBox
+          src={url3}
+          title={"Github Page 기반 개인 SPA 블로그 제작 프로젝트"}
+          dates={"2023.02.08 ~ Proceeding"}
+          description={
+            "지금 보고계신 웹 페이지는 Jekeyll을 사용하지 않고 Github Page와 React만을 사용하여 제작한 개인 블로그 및 포트폴리오입니다. 포트폴리오와 공부 기록을 업로드합니다. Single Page 방식이므로 Home URL에만 URL 직접 접속이 가능합니다."
+          }
+          stacks={[
+            <ReactIcon />,
+            <ReactrouterdomIcon />,
+            <StyledComponentIcon />,
+            <RecoilIcon />,
+            <GithubIcon />,
+          ]}
+          url={["https://github.com/JisooOvO/devlog"]}
+        />
+      </Suspense>
     </MyProjectContainer>
   );
 };
@@ -665,9 +670,7 @@ const Main = () => {
       <Description />
       <MyInfo />
       <MyStack />
-      <Suspense fallback={<Loading />}>
-        <MyProject />
-      </Suspense>
+      <MyProject />
       <BufferZone />
     </Board>
   );
