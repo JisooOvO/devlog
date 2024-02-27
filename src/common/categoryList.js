@@ -259,6 +259,55 @@ export const categoryList = [
               },
             ],
           },
+          {
+            id: 6,
+            name: "web components",
+            url: "/language/javascript/webcomponents",
+            list: [
+              {
+                id: 1,
+                name: "Custom Element",
+                url: "/language/javascript/webcomponents/1",
+              },
+              {
+                id: 2,
+                name: "Template",
+                url: "/language/javascript/webcomponents/2",
+              },
+              {
+                id: 3,
+                name: "Shadow DOM",
+                url: "/language/javascript/webcomponents/3",
+              },
+              {
+                id: 4,
+                name: "Shadow DOM Slot",
+                url: "/language/javascript/webcomponents/4",
+              },
+              {
+                id: 5,
+                name: "Shadow DOM Style",
+                url: "/language/javascript/webcomponents/5",
+              },
+              {
+                id: 6,
+                name: "Shadow DOM Event",
+                url: "/language/javascript/webcomponents/6",
+              },
+            ],
+          },
+          {
+            id: 7,
+            name: "Regular Expression",
+            url: "/language/javascript/regular_expression",
+            list: [
+              {
+                id: 1,
+                name: "패턴과 플래그",
+                url: "/language/javascript/regular_expression/1",
+              },
+            ],
+          },
         ],
       },
       { id: "main1-2", name: "Java", url: "/language/java" },
