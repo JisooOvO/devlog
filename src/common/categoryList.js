@@ -118,7 +118,7 @@ export const categoryList = [
               },
               {
                 id: 4,
-                name: "Mutation Observer",
+                name: "Observer",
                 url: "/language/javascript/event&interface/4",
               },
               {
@@ -133,7 +133,7 @@ export const categoryList = [
               },
               {
                 id: 7,
-                name: "마우스, 키보드 이벤트",
+                name: "UI 이벤트",
                 url: "/language/javascript/event&interface/7",
               },
               {
@@ -160,78 +160,85 @@ export const categoryList = [
           },
           {
             id: 3,
-            name: "network / file",
-            url: "/language/javascript/network&file",
+            name: "file",
+            url: "/language/javascript/file",
             list: [
               {
                 id: 1,
                 name: "ArrayBuffer",
-                url: "/language/javascript/network&file/1",
+                url: "/language/javascript/file/1",
               },
               {
                 id: 2,
                 name: "TextDecoder / Encoder",
-                url: "/language/javascript/network&file/2",
+                url: "/language/javascript/file/2",
               },
               {
                 id: 3,
                 name: "Blob",
-                url: "/language/javascript/network&file/3",
+                url: "/language/javascript/file/3",
               },
               {
                 id: 4,
                 name: "File / FileReader",
-                url: "/language/javascript/network&file/4",
+                url: "/language/javascript/file/4",
               },
               {
                 id: 5,
                 name: "FormData",
-                url: "/language/javascript/network&file/5",
+                url: "/language/javascript/file/5",
               },
               {
                 id: 6,
                 name: "URL",
-                url: "/language/javascript/network&file/6",
+                url: "/language/javascript/file/6",
               },
               {
                 id: 7,
                 name: "XMLHttpRequest",
-                url: "/language/javascript/network&file/7",
-              },
-              {
-                id: 8,
-                name: "Fetch",
-                url: "/language/javascript/network&file/8",
-              },
-              {
-                id: 9,
-                name: "CORS",
-                url: "/language/javascript/network&file/9",
-              },
-              {
-                id: 10,
-                name: "Cross-window 통신",
-                url: "/language/javascript/network&file/10",
-              },
-              {
-                id: 11,
-                name: "Polling",
-                url: "/language/javascript/network&file/11",
-              },
-              {
-                id: 12,
-                name: "Web Socket",
-                url: "/language/javascript/network&file/12",
-              },
-              {
-                id: 13,
-                name: "Server Sent Events",
-                url: "/language/javascript/network&file/13",
+                url: "/language/javascript/file/7",
               },
             ],
           },
           {
             id: 4,
+            name: "network",
+            url: "/language/javascript/network",
+            list: [
+              {
+                id: 1,
+                name: "Fetch",
+                url: "/language/javascript/network/1",
+              },
+              {
+                id: 2,
+                name: "CORS",
+                url: "/language/javascript/network/2",
+              },
+              {
+                id: 3,
+                name: "Iframe",
+                url: "/language/javascript/network/3",
+              },
+              {
+                id: 4,
+                name: "Polling",
+                url: "/language/javascript/network/4",
+              },
+              {
+                id: 5,
+                name: "Web Socket",
+                url: "/language/javascript/network/5",
+              },
+              {
+                id: 6,
+                name: "Server Sent Events",
+                url: "/language/javascript/network/6",
+              },
+            ],
+          },
+          {
+            id: 5,
             name: "browser data",
             url: "/language/javascript/browser_data",
             list: [

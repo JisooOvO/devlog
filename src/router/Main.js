@@ -22,6 +22,8 @@ import ReactrouterdomIcon from "../Images/ReactrouterdomIcon";
 import SocketIcon from "../Images/SocketIcon";
 import NotionIcon from "../Images/NotionIcon";
 import imgPlaceholder from "../Images/img-placeholder.png";
+import LaravelIcon from "../Images/LaravelIcon";
+import VueIcon from "../Images/VueIcon";
 
 const fadeIn = keyframes`
   from {
@@ -287,6 +289,11 @@ const StyledProjectBox = styled(MyInfoBox)`
     border-radius: 1rem;
   }
 
+  img:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
   #title {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -520,6 +527,7 @@ const MyStack = () => {
           <Stack icon={<CssIcon />} title={"CSS3"} />
           <Stack icon={<JavascriptIcon />} title={"JAVASCRIPT"} />
           <Stack icon={<ReactIcon />} title={"REACT"} />
+          <Stack icon={<VueIcon />} title={"Vue"} />
           <Stack icon={<ReactrouterdomIcon />} title={"REACT ROUTER DOM"} />
           <Stack icon={<RecoilIcon />} title={"RECOIL"} />
           <Stack icon={<TailwindIcon />} title={"TAILWINDCSS"} />
@@ -529,6 +537,7 @@ const MyStack = () => {
           <SubTitle>BACKEND</SubTitle>
           <Stack icon={<JavaIcon />} title={"JAVA"} />
           <Stack icon={<SpringIcon />} title={"SPRING BOOT"} />
+          <Stack icon={<LaravelIcon />} title={"Laravel"} />
           <Stack icon={<MysqlIcon />} title={"MYSQL"} />
         </StackCategory>
         <StackCategory>
@@ -547,7 +556,14 @@ const ProjectBox = ({ src, title, dates, description, stacks, url }) => {
   return (
     <StyledProjectBox>
       <InnerBox id="projectInner">
-        <img src={src} alt="프로젝트 이미지" loading="lazy" />
+        <img
+          src={src}
+          alt="프로젝트 이미지"
+          loading="lazy"
+          onClick={() => {
+            window.open(src, "_blank");
+          }}
+        />
         <div>
           <SubTitle id="title">{title}</SubTitle>
           <p id="dates">{dates}</p>
@@ -589,6 +605,7 @@ const MyProject = () => {
   const url1 = useImportBlob("/images/project1.gif");
   const url2 = useImportBlob("/images/project2.gif");
   const url3 = useImportBlob("/images/project3.png");
+  const url4 = useImportBlob("/images/project4.png");
 
   return (
     <MyProjectContainer>
@@ -640,7 +657,7 @@ const MyProject = () => {
       <ProjectBox
         src={url3 ? url3 : imgPlaceholder}
         title={"Github Page 기반 개인 SPA 블로그 제작 프로젝트"}
-        dates={"2023.02.08 ~ Proceeding"}
+        dates={"2024.02.08 ~ Proceeding"}
         description={
           "지금 보고계신 웹 페이지는 Jekeyll을 사용하지 않고 Github Page와 React만을 사용하여 제작한 개인 블로그 및 포트폴리오입니다. 포트폴리오와 공부 기록을 업로드합니다. Single Page 방식이므로 Home URL에만 URL 직접 접속이 가능합니다."
         }
@@ -652,6 +669,18 @@ const MyProject = () => {
           <GithubIcon />,
         ]}
         url={["https://github.com/JisooOvO/devlog"]}
+      />
+      <ProjectBox
+        src={url4 ? url4 : imgPlaceholder}
+        title={
+          "PHP Larabel Framework + Inertia Vue3 기반 렌트카 예약 서비스 미니 프로젝트"
+        }
+        dates={"2024.02.20 ~ 2024.02.26"}
+        description={
+          "PHP 백엔드 프레임워크 Larabel와 Inertia Vue3를 이용하여 렌트카 예약 웹 서비스를 구현하였습니다."
+        }
+        stacks={[<VueIcon />, <LaravelIcon />, <MysqlIcon />, <TailwindIcon />]}
+        url={["https://github.com/JisooOvO/TechProject-Vue-Laravel-rentalcars"]}
       />
     </MyProjectContainer>
   );
