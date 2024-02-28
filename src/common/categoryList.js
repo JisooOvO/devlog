@@ -298,7 +298,7 @@ export const categoryList = [
           },
           {
             id: 7,
-            name: "Regular Expression",
+            name: "regular expression",
             url: "/language/javascript/regular_expression",
             list: [
               {
@@ -312,6 +312,30 @@ export const categoryList = [
       },
       { id: "main1-2", name: "Java", url: "/language/java" },
       { id: "main1-3", name: "Python", url: "/language/python" },
+      {
+        id: "main1-4",
+        name: "Php",
+        url: "/language/php",
+        sub: [
+          {
+            id: 1,
+            name: "basic",
+            url: "/language/php/basic",
+            list: [
+              {
+                id: 1,
+                name: "php 소개 및 설치 방법",
+                url: "/language/php/basic/1",
+              },
+              {
+                id: 2,
+                name: "변수와 타입",
+                url: "/language/php/basic/2",
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   {
@@ -349,12 +373,12 @@ export const categoryList = [
             url: "/stack/library/styled-components",
             list: [],
           },
-          {
-            id: "main2-2-2",
-            name: "React-query",
-            url: "/stack/library/react-query",
-            list: [],
-          },
+          // {
+          //   id: "main2-2-2",
+          //   name: "React-query",
+          //   url: "/stack/library/react-query",
+          //   list: [],
+          // },
         ],
       },
     ],
