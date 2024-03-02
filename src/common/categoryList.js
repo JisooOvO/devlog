@@ -16,7 +16,7 @@ export const categoryList = [
             list: [
               {
                 id: 1,
-                name: "자바스크립트란",
+                name: "자바스크립트",
                 url: "/language/javascript/basic/1",
               },
               {
@@ -310,11 +310,11 @@ export const categoryList = [
           },
         ],
       },
-      { id: "main1-2", name: "Java", url: "/language/java" },
+      { id: "main1-2", name: "JAVA", url: "/language/java" },
       { id: "main1-3", name: "Python", url: "/language/python" },
       {
         id: "main1-4",
-        name: "Php",
+        name: "PHP",
         url: "/language/php",
         sub: [
           {
@@ -324,15 +324,87 @@ export const categoryList = [
             list: [
               {
                 id: 1,
-                name: "php 소개 및 설치 방법",
+                name: "php",
                 url: "/language/php/basic/1",
               },
               {
                 id: 2,
-                name: "변수와 타입",
+                name: "변수와 상수",
                 url: "/language/php/basic/2",
               },
+              {
+                id: 3,
+                name: "타입",
+                url: "/language/php/basic/3",
+              },
+              {
+                id: 4,
+                name: "표현식과 연산자",
+                url: "/language/php/basic/4",
+              },
+              {
+                id: 5,
+                name: "제어문",
+                url: "/language/php/basic/5",
+              },
+              {
+                id: 6,
+                name: "함수",
+                url: "/language/php/basic/6",
+              },
+              {
+                id: 7,
+                name: "클래스와 객체",
+                url: "/language/php/basic/7",
+              },
+              {
+                id: 8,
+                name: "네임스페이스",
+                url: "/language/php/basic/8",
+              },
+              {
+                id: 9,
+                name: "Enumerations",
+                url: "/language/php/basic/9",
+              },
+              {
+                id: 10,
+                name: "에러 및 예외",
+                url: "/language/php/basic/10",
+              },
+              {
+                id: 11,
+                name: "Attributes",
+                url: "/language/php/basic/11",
+              },
+              {
+                id: 12,
+                name: "References",
+                url: "/language/php/basic/12",
+              },
+              {
+                id: 13,
+                name: "Context Options",
+                url: "/language/php/basic/13",
+              },
+              {
+                id: 14,
+                name: "Protocols",
+                url: "/language/php/basic/14",
+              },
             ],
+          },
+          {
+            id: 2,
+            name: "security",
+            url: "/language/php/security",
+            list: [],
+          },
+          {
+            id: 3,
+            name: "extension",
+            url: "/language/php/extension",
+            list: [],
           },
         ],
       },
@@ -345,42 +417,72 @@ export const categoryList = [
     sub: [
       {
         id: "main2-1",
-        name: "Framework",
-        url: "/stack/framework",
+        name: "Web Framework",
+        url: "/stack/web_framework",
         sub: [
           {
             id: "main2-1-1",
-            name: "React",
+            name: "react",
             url: "/stack/framework/react",
             list: [],
           },
           {
             id: "main2-1-2",
-            name: "Spring Boot",
+            name: "vue",
+            url: "/stack/framework/vue",
+            list: [
+              {
+                id: 1,
+                name: "vue",
+                url: "/stack/framework/vue/1",
+              },
+            ],
+          },
+          {
+            id: "main2-1-3",
+            name: "nextjs",
+            url: "/stack/framework/nextjs",
+            list: [],
+          },
+          {
+            id: "main2-1-4",
+            name: "spring boot",
             url: "/stack/framework/spring_boot",
             list: [],
           },
-        ],
-      },
-      {
-        id: "main2-2",
-        name: "Library",
-        url: "/stack/library",
-        sub: [
           {
-            id: "main2-2-1",
-            name: "Styled-Components",
-            url: "/stack/library/styled-components",
+            id: "main2-1-5",
+            name: "laravel",
+            url: "/stack/framework/laravel",
             list: [],
           },
-          // {
-          //   id: "main2-2-2",
-          //   name: "React-query",
-          //   url: "/stack/library/react-query",
-          //   list: [],
-          // },
         ],
       },
+      // {
+      //   id: "main2-2",
+      //   name: "Web Library",
+      //   url: "/stack/web_library",
+      //   sub: [
+      //     {
+      //       id: "main2-2-1",
+      //       name: "styled-components",
+      //       url: "/stack/library/styled-components",
+      //       list: [],
+      //     },
+      //     {
+      //       id: "main2-2-2",
+      //       name: "tailwindcss",
+      //       url: "/stack/library/tailwindcss",
+      //       list: [],
+      //     },
+      //     {
+      //       id: "main2-2-3",
+      //       name: "react-query",
+      //       url: "/stack/library/react-query",
+      //       list: [],
+      //     },
+      //   ],
+      // },
     ],
   },
   {

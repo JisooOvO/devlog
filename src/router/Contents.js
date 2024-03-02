@@ -6,7 +6,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled, { keyframes } from "styled-components";
 import Loading from "../common/Loading";
-import { useSetInnerWidth } from "../common/hooks";
 
 const StyledCommnet = styled.div`
   .utterances {

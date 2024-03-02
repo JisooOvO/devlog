@@ -83,6 +83,10 @@ const ThirdCategory = styled.ul`
   &.hidden {
     display: none;
   }
+
+  .list {
+    display: none;
+  }
 `;
 
 const ThirdTitle = styled(SubTitle)`
@@ -267,10 +271,10 @@ const SideBar = ({ className }) => {
                         {sub.name}
                         <Number>{"(" + sub.list?.length + ")"}</Number>
                       </p>
-                      <Button onClick={handleFold}>▼</Button>
+                      <Button onClick={handleFold}>▲</Button>
                     </ThirdTitle>
                     {sub.list?.map((list) => (
-                      <List to={list.url} key={list.id}>
+                      <List to={list.url} key={list.id} className="hidden">
                         {list.name}
                       </List>
                     ))}
