@@ -406,23 +406,13 @@ export const categoryList = [
             list: [
               {
                 id: 1,
-                name: "Context Options",
+                name: "Cookie, HTTP",
                 url: "/language/php/network/1",
               },
               {
                 id: 2,
-                name: "Protocols",
+                name: "Session",
                 url: "/language/php/network/2",
-              },
-              {
-                id: 3,
-                name: "쿠키, 헤더 및 응답 코드",
-                url: "/language/php/network/3",
-              },
-              {
-                id: 4,
-                name: "세션",
-                url: "/language/php/network/4",
               },
             ],
           },
