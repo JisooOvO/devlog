@@ -24,6 +24,7 @@ import NotionIcon from "../Images/NotionIcon";
 import imgPlaceholder from "../Images/img-placeholder.png";
 import LaravelIcon from "../Images/LaravelIcon";
 import VueIcon from "../Images/VueIcon";
+import PhpIcon from "../Images/PhpIcon";
 
 const fadeIn = keyframes`
   from {
@@ -525,27 +526,28 @@ const MyStack = () => {
           <SubTitle>FRONTEND</SubTitle>
           <Stack icon={<Html5Icon />} title={"HTML5"} />
           <Stack icon={<CssIcon />} title={"CSS3"} />
-          <Stack icon={<JavascriptIcon />} title={"JAVASCRIPT"} />
-          <Stack icon={<ReactIcon />} title={"REACT"} />
+          <Stack icon={<JavascriptIcon />} title={"Javascript"} />
+          <Stack icon={<ReactIcon />} title={"React"} />
           <Stack icon={<VueIcon />} title={"Vue"} />
-          <Stack icon={<ReactrouterdomIcon />} title={"REACT ROUTER DOM"} />
-          <Stack icon={<RecoilIcon />} title={"RECOIL"} />
-          <Stack icon={<TailwindIcon />} title={"TAILWINDCSS"} />
-          <Stack icon={<StyledComponentIcon />} title={"STYLED-COMPONENTS"} />
+          <Stack icon={<ReactrouterdomIcon />} title={"React Router DOM"} />
+          <Stack icon={<RecoilIcon />} title={"Recoil"} />
+          <Stack icon={<TailwindIcon />} title={"Tailwind CSS"} />
+          <Stack icon={<StyledComponentIcon />} title={"Styled-Components"} />
         </StackCategory>
         <StackCategory>
           <SubTitle>BACKEND</SubTitle>
           <Stack icon={<JavaIcon />} title={"JAVA"} />
-          <Stack icon={<SpringIcon />} title={"SPRING BOOT"} />
+          <Stack icon={<SpringIcon />} title={"Spring Boot"} />
+          <Stack icon={<PhpIcon />} title={"PHP"} />
           <Stack icon={<LaravelIcon />} title={"Laravel"} />
-          <Stack icon={<MysqlIcon />} title={"MYSQL"} />
+          <Stack icon={<MysqlIcon />} title={"MySQL"} />
         </StackCategory>
         <StackCategory>
           <SubTitle>ETC</SubTitle>
-          <Stack icon={<GitIcon />} title={"GIT"} />
-          <Stack icon={<GithubIcon />} title={"GITHUB"} />
-          <Stack icon={<PythonIcon />} title={"PYTHON"} />
-          <Stack icon={<SocketIcon />} title={"STOMP"} />
+          <Stack icon={<GitIcon />} title={"Git"} />
+          <Stack icon={<GithubIcon />} title={"Github"} />
+          <Stack icon={<PythonIcon />} title={"Python"} />
+          <Stack icon={<SocketIcon />} title={"Socket"} />
         </StackCategory>
       </Stacks>
     </MyStackContainer>
@@ -679,7 +681,13 @@ const MyProject = () => {
         description={
           "PHP 백엔드 프레임워크 Larabel와 Inertia Vue3를 이용하여 렌트카 예약 웹 서비스를 구현하였습니다."
         }
-        stacks={[<VueIcon />, <LaravelIcon />, <MysqlIcon />, <TailwindIcon />]}
+        stacks={[
+          <VueIcon />,
+          <PhpIcon />,
+          <LaravelIcon />,
+          <MysqlIcon />,
+          <TailwindIcon />,
+        ]}
         url={["https://github.com/JisooOvO/TechProject-Vue-Laravel-rentalcars"]}
       />
     </MyProjectContainer>

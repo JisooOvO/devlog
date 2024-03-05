@@ -310,8 +310,8 @@ export const categoryList = [
           },
         ],
       },
-      { id: "main1-2", name: "JAVA", url: "/language/java" },
-      { id: "main1-3", name: "Python", url: "/language/python" },
+      { id: "main1-2", name: "JAVA", url: "/language/java", sub: [] },
+      { id: "main1-3", name: "Python", url: "/language/python", sub: [] },
       {
         id: "main1-4",
         name: "PHP",
@@ -443,7 +443,7 @@ export const categoryList = [
             list: [
               {
                 id: 1,
-                name: "vue",
+                name: "vue 시작하기",
                 url: "/stack/framework/vue/1",
               },
             ],
@@ -464,7 +464,13 @@ export const categoryList = [
             id: "main2-1-5",
             name: "laravel",
             url: "/stack/framework/laravel",
-            list: [],
+            list: [
+              {
+                id: 1,
+                name: "laravel 시작하기",
+                url: "/stack/framework/laravel/1",
+              },
+            ],
           },
         ],
       },
