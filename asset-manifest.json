@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/devlog/static/css/main.c45c768a.css",
+    "main.js": "/devlog/static/js/main.d43cab62.js",
+    "index.html": "/devlog/index.html",
+    "main.c45c768a.css.map": "/devlog/static/css/main.c45c768a.css.map",
+    "main.d43cab62.js.map": "/devlog/static/js/main.d43cab62.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c45c768a.css",
+    "static/js/main.d43cab62.js"
+  ]
+}
