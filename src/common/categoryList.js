@@ -470,6 +470,21 @@ export const categoryList = [
                 name: "laravel 시작하기",
                 url: "/stack/framework/laravel/1",
               },
+              {
+                id: 2,
+                name: "concept",
+                url: "/stack/framework/laravel/2",
+              },
+              {
+                id: 3,
+                name: "route",
+                url: "/stack/framework/laravel/3",
+              },
+              {
+                id: 4,
+                name: "middleware",
+                url: "/stack/framework/laravel/4",
+              },
             ],
           },
         ],

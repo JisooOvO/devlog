@@ -1,4 +1,8 @@
 /* MarkDown*/
+.markdown {
+	line-height: 2rem;
+}
+
 .markdown a {
 	color: rgb(254, 110, 11);
     margin-block-start: 15px;
@@ -52,8 +56,8 @@
 	font-size: 1.25rem;
     font-weight: 300;
 	margin-left: 2rem;
-    margin-block-start: 2rem;
-	margin-block-end: 2rem;
+    margin-block-start: 1rem;
+	margin-block-end: 1rem;
 }
 
 .markdown li {
