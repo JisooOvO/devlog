@@ -485,6 +485,61 @@ export const categoryList = [
                 name: "middleware",
                 url: "/stack/framework/laravel/4",
               },
+              {
+                id: 5,
+                name: "controller",
+                url: "/stack/framework/laravel/5",
+              },
+              {
+                id: 6,
+                name: "request",
+                url: "/stack/framework/laravel/6",
+              },
+              {
+                id: 7,
+                name: "response",
+                url: "/stack/framework/laravel/7",
+              },
+              {
+                id: 8,
+                name: "view",
+                url: "/stack/framework/laravel/8",
+              },
+              {
+                id: 9,
+                name: "url",
+                url: "/stack/framework/laravel/9",
+              },
+              {
+                id: 10,
+                name: "validation",
+                url: "/stack/framework/laravel/10",
+              },
+              {
+                id: 11,
+                name: "error handling",
+                url: "/stack/framework/laravel/11",
+              },
+              {
+                id: 12,
+                name: "logging",
+                url: "/stack/framework/laravel/12",
+              },
+              {
+                id: 13,
+                name: "security",
+                url: "/stack/framework/laravel/13",
+              },
+              {
+                id: 14,
+                name: "database",
+                url: "/stack/framework/laravel/14",
+              },
+              {
+                id: 15,
+                name: "eloquent orm",
+                url: "/stack/framework/laravel/15",
+              },
             ],
           },
         ],
