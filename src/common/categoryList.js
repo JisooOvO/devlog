@@ -437,6 +437,12 @@ export const categoryList = [
             list: [],
           },
           {
+            id: "main2-1-3",
+            name: "nextjs",
+            url: "/stack/framework/nextjs",
+            list: [],
+          },
+          {
             id: "main2-1-2",
             name: "vue",
             url: "/stack/framework/vue",
@@ -446,13 +452,32 @@ export const categoryList = [
                 name: "vue 시작하기",
                 url: "/stack/framework/vue/1",
               },
+              {
+                id: 2,
+                name: "state, method",
+                url: "/stack/framework/vue/2",
+              },
+              {
+                id: 3,
+                name: "binding",
+                url: "/stack/framework/vue/3",
+              },
+              {
+                id: 4,
+                name: "rendering",
+                url: "/stack/framework/vue/4",
+              },
+              {
+                id: 5,
+                name: "event handling",
+                url: "/stack/framework/vue/5",
+              },
+              {
+                id: 6,
+                name: "vue 생명 주기",
+                url: "/stack/framework/vue/6",
+              },
             ],
-          },
-          {
-            id: "main2-1-3",
-            name: "nextjs",
-            url: "/stack/framework/nextjs",
-            list: [],
           },
           {
             id: "main2-1-4",
@@ -492,53 +517,43 @@ export const categoryList = [
               },
               {
                 id: 6,
-                name: "request",
+                name: "request, response",
                 url: "/stack/framework/laravel/6",
               },
               {
                 id: 7,
-                name: "response",
+                name: "event",
                 url: "/stack/framework/laravel/7",
               },
               {
                 id: 8,
-                name: "view",
+                name: "view, blade template",
                 url: "/stack/framework/laravel/8",
               },
               {
                 id: 9,
-                name: "url",
+                name: "validation",
                 url: "/stack/framework/laravel/9",
               },
               {
                 id: 10,
-                name: "validation",
+                name: "error handling",
                 url: "/stack/framework/laravel/10",
               },
               {
                 id: 11,
-                name: "error handling",
+                name: "security",
                 url: "/stack/framework/laravel/11",
               },
               {
                 id: 12,
-                name: "logging",
+                name: "database",
                 url: "/stack/framework/laravel/12",
               },
               {
                 id: 13,
-                name: "security",
-                url: "/stack/framework/laravel/13",
-              },
-              {
-                id: 14,
-                name: "database",
-                url: "/stack/framework/laravel/14",
-              },
-              {
-                id: 15,
                 name: "eloquent orm",
-                url: "/stack/framework/laravel/15",
+                url: "/stack/framework/laravel/13",
               },
             ],
           },

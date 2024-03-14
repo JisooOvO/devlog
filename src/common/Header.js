@@ -248,7 +248,7 @@ const Header = () => {
     <>
       <HeaderContainer ref={targetRef}>
         <StlyedLink id="home" to={"/"} onClick={handleClick}>
-          <p className="blog-name">Jisoo's Note</p>
+          <p className="blog-name">My Devlog</p>
           <p className="description">https://github.com/JisooOvO</p>
         </StlyedLink>
         {innerWidth >= MD ? (
