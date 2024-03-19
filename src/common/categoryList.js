@@ -418,6 +418,45 @@ export const categoryList = [
                     },
                 ],
             },
+            {
+                id: 'main1-5',
+                name: 'Dart',
+                url: '/language/dart',
+                sub: [
+                    {
+                        id: 1,
+                        name: 'basic',
+                        url: '/language/dart/basic',
+                        list: [
+                            {
+                                id: 1,
+                                name: 'dart 특징',
+                                url: '/language/dart/basic/1',
+                            },
+                            {
+                                id: 2,
+                                name: '변수, 연산자',
+                                url: '/language/dart/basic/2',
+                            },
+                            {
+                                id: 3,
+                                name: '주석, 메타데이터',
+                                url: '/language/dart/basic/3',
+                            },
+                            {
+                                id: 4,
+                                name: '라이브러리, 임포트',
+                                url: '/language/dart/basic/4',
+                            },
+                            {
+                                id: 5,
+                                name: '타입',
+                                url: '/language/dart/basic/5',
+                            },
+                        ],
+                    },
+                ],
+            },
         ],
     },
     {
