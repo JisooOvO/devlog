@@ -521,6 +521,16 @@ export const categoryList = [
                                 name: 'watch',
                                 url: '/stack/framework/vue/7',
                             },
+                            {
+                                id: 8,
+                                name: '템플릿 참조',
+                                url: '/stack/framework/vue/8',
+                            },
+                            {
+                                id: 9,
+                                name: '컴포넌트',
+                                url: '/stack/framework/vue/9',
+                            },
                         ],
                     },
                     {
