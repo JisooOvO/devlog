@@ -516,6 +516,11 @@ export const categoryList = [
                                 name: 'vue 생명 주기',
                                 url: '/stack/framework/vue/6',
                             },
+                            {
+                                id: 7,
+                                name: 'watch',
+                                url: '/stack/framework/vue/7',
+                            },
                         ],
                     },
                     {
