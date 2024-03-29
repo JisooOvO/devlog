@@ -453,6 +453,26 @@ export const categoryList = [
                                 name: '타입',
                                 url: '/language/dart/basic/5',
                             },
+                            {
+                                id: 6,
+                                name: '패턴 및 제어문',
+                                url: '/language/dart/basic/6',
+                            },
+                            {
+                                id: 7,
+                                name: '함수',
+                                url: '/language/dart/basic/7',
+                            },
+                            {
+                                id: 8,
+                                name: '예외 처리',
+                                url: '/language/dart/basic/8',
+                            },
+                            {
+                                id: 9,
+                                name: '클래스와 객체',
+                                url: '/language/dart/basic/9',
+                            },
                         ],
                     },
                 ],
