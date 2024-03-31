@@ -430,7 +430,7 @@ export const categoryList = [
             list: [
               {
                 id: 1,
-                name: "dart 특징",
+                name: "dart",
                 url: "/language/dart/basic/1",
               },
               {
@@ -480,6 +480,38 @@ export const categoryList = [
               },
             ],
           },
+          {
+            id: 2,
+            name: "library",
+            url: "/language/dart/library",
+            list: [
+              {
+                id: 1,
+                name: "core",
+                url: "/language/dart/library/1",
+              },
+              {
+                id: 2,
+                name: "async",
+                url: "/language/dart/library/2",
+              },
+              {
+                id: 3,
+                name: "math",
+                url: "/language/dart/library/3",
+              },
+              {
+                id: 4,
+                name: "convert",
+                url: "/language/dart/library/4",
+              },
+              {
+                id: 5,
+                name: "io",
+                url: "/language/dart/library/5",
+              },
+            ],
+          },
         ],
       },
     ],
@@ -492,7 +524,7 @@ export const categoryList = [
       {
         id: "main2-1",
         name: "Web Framework",
-        url: "/stack/web_framework",
+        url: "/stack/framework",
         sub: [
           {
             id: "main2-1-1",
@@ -663,6 +695,19 @@ export const categoryList = [
       //     },
       //   ],
       // },
+      {
+        id: "main2-3",
+        name: "App Framework",
+        url: "/stack/app",
+        sub: [
+          {
+            id: "main2-3-1",
+            name: "flutter",
+            url: "/stack/app/flutter",
+            list: [],
+          },
+        ],
+      },
     ],
   },
   {
