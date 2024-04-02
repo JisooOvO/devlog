@@ -704,7 +704,53 @@ export const categoryList = [
             id: "main2-3-1",
             name: "flutter",
             url: "/stack/app/flutter",
-            list: [],
+            list: [
+              {
+                  id: 1,
+                  name: "layout",
+                  url: "/stack/app/flutter/1",
+              },
+              {
+                  id: 2,
+                  name: "테마 디자인 및 미디어",
+                  url: "/stack/app/flutter/2",
+              },
+              {
+                  id: 3,
+                  name: "상태 및 상호 작용",
+                  url: "/stack/app/flutter/3",
+              },
+              {
+                id: 4,
+                name: "라우트",
+                url: "/stack/app/flutter/4",
+              },
+              {
+                id: 5,
+                name: "애니메이션",
+                url: "/stack/app/flutter/5",
+              },
+              {
+                id: 6,
+                name: "http",
+                url: "/stack/app/flutter/6",
+              },
+              {
+                id: 7,
+                name: "데이터 저장",
+                url: "/stack/app/flutter/7",
+              },
+              {
+                id: 8,
+                name: "성능",
+                url: "/stack/app/flutter/8",
+              },
+              {
+                id: 9,
+                name: "상태 관리",
+                url: "/stack/app/flutter/9",
+              },
+            ],
           },
         ],
       },
