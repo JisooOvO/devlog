@@ -11,9 +11,9 @@ import { atomIsObserve } from "./atom";
 const SideBarContainer = styled.section`
   width: 22rem;
   height: calc(100vh);
-  position: fixed;
+  position: ${(props) => (props.$isObserve ? "absolute" : "fixed")};
   z-index: 777;
-  top: ${(props) => (props.$isObserve ? "7rem" : "0")};
+  top: ${(props) => (props.$isObserve ? "7rem" : "0rem")};
   padding: 4rem;
   background-color: #f9f9f8;
   overflow-y: scroll;

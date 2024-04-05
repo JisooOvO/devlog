@@ -206,7 +206,7 @@ const HamburgerNav = ({ setIsHambergurButtonClick }) => {
 
 const Header = () => {
   const { targetRef, isObserve } = useIntersectionObserver({
-    threshold: 0.5,
+    threshold: 0,
   });
   const setIsObserve = useSetRecoilState(atomIsObserve);
   const innerWidth = useSetInnerWidth();
