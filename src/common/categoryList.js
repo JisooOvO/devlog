@@ -588,6 +588,11 @@ export const categoryList = [
                 name: "컴포넌트",
                 url: "/stack/framework/vue/9",
               },
+              {
+                id: 10,
+                name: "컴포저블",
+                url: "/stack/framework/vue/10",
+              },
             ],
           },
           {
